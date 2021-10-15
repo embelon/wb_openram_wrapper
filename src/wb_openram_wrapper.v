@@ -49,7 +49,7 @@ module wb_openram_wrapper
     output                      clk0,       // clock
     output                      csb0,       // active low chip select
     output                      web0,       // active low write control
-    output  [31:0]              wmask0,     // write mask
+    output  [3:0]              	wmask0,     // write (byte) mask
     output  [ADDR_WIDTH-1:0]    addr0,
     input   [31:0]              din0,
     output  [31:0]              dout0,
