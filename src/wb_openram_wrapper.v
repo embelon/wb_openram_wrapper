@@ -52,7 +52,7 @@ module wb_openram_wrapper
     output  [3:0]              	wmask0,     // write (byte) mask
     output  [ADDR_WIDTH-1:0]    addr0,
     input   [31:0]              din0,
-    output  [31:0]              dout0,
+    output  [31:0]              dout0
 /*    
     // Port 1: R
     output                      clk1,       // clock
