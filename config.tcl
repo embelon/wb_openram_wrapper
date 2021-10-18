@@ -7,8 +7,8 @@ set ::env(DESIGN_NAME) wb_openram_wrapper
 # Change if needed
 set ::env(VERILOG_FILES) [glob $::env(DESIGN_DIR)/src/*.v]
 
-set ::env(FP_PDN_VOFFSET) 0
-set ::env(FP_PDN_VPITCH) 5
+# set ::env(FP_PDN_VOFFSET) 0
+# set ::env(FP_PDN_VPITCH) 5
 
 # OpenROAD reports unconnected nodes as a warning.
 # OpenLane typically treats unconnected node warnings 
