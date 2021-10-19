@@ -60,7 +60,9 @@ parameter ADDR_LO_MASK = (1 << ADDR_WIDTH) - 1;
 parameter ADDR_HI_MASK = 32'hffff_ffff - ADDR_LO_MASK;
 
 wire ram_cs;
-assign ram_cs = !(wbs_stb_i && wbs_cyc_i && ((wbs_adr_i & ADDR_HI_MASK) == BASE_ADDR)) || wb_rst_i;
+wire ram_csn;
+assign ram_cs = wbs_stb_i && wbs_cyc_i && ((wbs_adr_i & ADDR_HI_MASK) == BASE_ADDR) && !wb_rst_i;
+assign ram_csn = !ram_cs;
 
 reg ram_wb_ack;
 always @(posedge wb_clk_i) begin
@@ -72,14 +74,14 @@ always @(posedge wb_clk_i) begin
 end
      
 assign clk0 = wb_clk_i;
-assign csb0 = ram_cs;
+assign csb0 = ram_csn;
 assign web0 = ~wbs_we_i;
 assign wmask0 = wbs_sel_i;
 assign addr0 = wbs_adr_i[ADDR_WIDTH-1:0];
 assign dout0 = wbs_dat_i;
 
 assign wbs_dat_o = din0;
-assign wbs_ack_o = ram_wb_ack;
+assign wbs_ack_o = ram_wb_ack && ram_cs;
 
 endmodule	// wb_openram_wrapper
 
