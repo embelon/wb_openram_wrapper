@@ -69,7 +69,7 @@ always @(posedge wb_clk_i) begin
     if (wb_rst_i) begin
         ram_wb_ack <= 0;
     end else begin
-        ram_wb_ack <= !ram_cs;
+        ram_wb_ack <= ram_cs;
     end
 end
      
