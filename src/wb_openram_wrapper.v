@@ -40,19 +40,19 @@ module wb_openram_wrapper
 
     // OpenRAM interface - almost dual port: RW + R
     // Port 0: RW
-    output                      clk0,       // clock
-    output                      csb0,       // active low chip select
-    output                      web0,       // active low write control
-    output  [3:0]              	wmask0,     // write (byte) mask
-    output  [ADDR_WIDTH-1:0]    addr0,
-    input   [31:0]              din0,
-    output  [31:0]              dout0
+    output                      ram_clk0,       // clock
+    output                      ram_csb0,       // active low chip select
+    output                      ram_web0,       // active low write control
+    output  [3:0]              	ram_wmask0,     // write (byte) mask
+    output  [ADDR_WIDTH-1:0]    ram_addr0,
+    input   [31:0]              ram_din0,
+    output  [31:0]              ram_dout0
 /*    
     // Port 1: R
-    output                      clk1,       // clock
-    output                      csb1,       // active low chip select
-    output  [ADDR_WIDTH-1:0]    addr1,  
-    output  [31:0]              dout1
+    output                      ram_clk1,       // clock
+    output                      ram_csb1,       // active low chip select
+    output  [ADDR_WIDTH-1:0]    ram_addr1,  
+    output  [31:0]              ram_dout1
 */    
 );
 
@@ -60,28 +60,30 @@ parameter ADDR_LO_MASK = (1 << ADDR_WIDTH) - 1;
 parameter ADDR_HI_MASK = 32'hffff_ffff - ADDR_LO_MASK;
 
 wire ram_cs;
-wire ram_csn;
 assign ram_cs = wbs_stb_i && wbs_cyc_i && ((wbs_adr_i & ADDR_HI_MASK) == BASE_ADDR) && !wb_rst_i;
-assign ram_csn = !ram_cs;
 
-reg ram_wb_ack;
-always @(posedge wb_clk_i) begin
+reg ram_cs_r;
+reg ram_wbs_ack_r;
+always @(negedge wb_clk_i) begin
     if (wb_rst_i) begin
-        ram_wb_ack <= 0;
-    end else begin
-        ram_wb_ack <= ram_cs;
+        ram_cs_r <= 0;
+        ram_wbs_ack_r <= 0;
+    end
+    else begin
+        ram_cs_r <= !ram_cs_r && ram_cs;
+        ram_wbs_ack_r <= ram_cs_r;
     end
 end
      
-assign clk0 = wb_clk_i;
-assign csb0 = ram_csn;
-assign web0 = ~wbs_we_i;
-assign wmask0 = wbs_sel_i;
-assign addr0 = wbs_adr_i[ADDR_WIDTH-1:0];
-assign dout0 = wbs_dat_i;
+assign ram_clk0 = wb_clk_i;
+assign ram_csb0 = !ram_cs_r;
+assign ram_web0 = ~wbs_we_i;
+assign ram_wmask0 = wbs_sel_i;
+assign ram_addr0 = wbs_adr_i[ADDR_WIDTH-1:0];
+assign ram_dout0 = wbs_dat_i;
 
-assign wbs_dat_o = din0;
-assign wbs_ack_o = ram_wb_ack && ram_cs;
+assign wbs_dat_o = ram_din0;
+assign wbs_ack_o = ram_wbs_ack_r && ram_cs;
 
 endmodule	// wb_openram_wrapper
 
