@@ -7,598 +7,638 @@ MACRO wb_openram_wrapper
   FOREIGN wb_openram_wrapper ;
   ORIGIN 0.000 0.000 ;
   SIZE 40.000 BY 300.000 ;
-  PIN addr0[0]
+  PIN ram_addr0[0]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 6.840 4.000 7.440 ;
     END
-  END addr0[0]
-  PIN addr0[1]
+  END ram_addr0[0]
+  PIN ram_addr0[1]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 248.920 4.000 249.520 ;
     END
-  END addr0[1]
-  PIN addr0[2]
+  END ram_addr0[1]
+  PIN ram_addr0[2]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 61.240 4.000 61.840 ;
     END
-  END addr0[2]
-  PIN addr0[3]
+  END ram_addr0[2]
+  PIN ram_addr0[3]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 280.200 4.000 280.800 ;
     END
-  END addr0[3]
-  PIN addr0[4]
+  END ram_addr0[3]
+  PIN ram_addr0[4]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 293.800 40.000 294.400 ;
     END
-  END addr0[4]
-  PIN addr0[5]
+  END ram_addr0[4]
+  PIN ram_addr0[5]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 38.730 296.000 39.010 300.000 ;
     END
-  END addr0[5]
-  PIN addr0[6]
+  END ram_addr0[5]
+  PIN ram_addr0[6]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 163.240 4.000 163.840 ;
     END
-  END addr0[6]
-  PIN addr0[7]
+  END ram_addr0[6]
+  PIN ram_addr0[7]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 25.880 40.000 26.480 ;
     END
-  END addr0[7]
-  PIN clk0
+  END ram_addr0[7]
+  PIN ram_clk0
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 14.810 296.000 15.090 300.000 ;
     END
-  END clk0
-  PIN csb0
+  END ram_clk0
+  PIN ram_csb0
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 55.800 40.000 56.400 ;
     END
-  END csb0
-  PIN din0[0]
+  END ram_csb0
+  PIN ram_din0[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 28.610 0.000 28.890 4.000 ;
     END
-  END din0[0]
-  PIN din0[10]
+  END ram_din0[0]
+  PIN ram_din0[10]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 84.360 40.000 84.960 ;
     END
-  END din0[10]
-  PIN din0[11]
+  END ram_din0[10]
+  PIN ram_din0[11]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 54.440 4.000 55.040 ;
     END
-  END din0[11]
-  PIN din0[12]
+  END ram_din0[11]
+  PIN ram_din0[12]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 224.440 40.000 225.040 ;
     END
-  END din0[12]
-  PIN din0[13]
+  END ram_din0[12]
+  PIN ram_din0[13]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 10.210 0.000 10.490 4.000 ;
     END
-  END din0[13]
-  PIN din0[14]
+  END ram_din0[13]
+  PIN ram_din0[14]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 276.120 4.000 276.720 ;
     END
-  END din0[14]
-  PIN din0[15]
+  END ram_din0[14]
+  PIN ram_din0[15]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 229.880 4.000 230.480 ;
     END
-  END din0[15]
-  PIN din0[16]
+  END ram_din0[15]
+  PIN ram_din0[16]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 186.360 4.000 186.960 ;
     END
-  END din0[16]
-  PIN din0[17]
+  END ram_din0[16]
+  PIN ram_din0[17]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 28.610 296.000 28.890 300.000 ;
     END
-  END din0[17]
-  PIN din0[18]
+  END ram_din0[17]
+  PIN ram_din0[18]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 263.880 4.000 264.480 ;
     END
-  END din0[18]
-  PIN din0[19]
+  END ram_din0[18]
+  PIN ram_din0[19]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 239.400 40.000 240.000 ;
     END
-  END din0[19]
-  PIN din0[1]
+  END ram_din0[19]
+  PIN ram_din0[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 85.720 4.000 86.320 ;
     END
-  END din0[1]
-  PIN din0[20]
+  END ram_din0[1]
+  PIN ram_din0[20]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 145.560 40.000 146.160 ;
     END
-  END din0[20]
-  PIN din0[21]
+  END ram_din0[20]
+  PIN ram_din0[21]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 244.840 4.000 245.440 ;
     END
-  END din0[21]
-  PIN din0[22]
+  END ram_din0[21]
+  PIN ram_din0[22]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 165.960 40.000 166.560 ;
     END
-  END din0[22]
-  PIN din0[23]
+  END ram_din0[22]
+  PIN ram_din0[23]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 28.600 40.000 29.200 ;
     END
-  END din0[23]
-  PIN din0[24]
+  END ram_din0[23]
+  PIN ram_din0[24]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 159.160 4.000 159.760 ;
     END
-  END din0[24]
-  PIN din0[25]
+  END ram_din0[24]
+  PIN ram_din0[25]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 285.640 40.000 286.240 ;
     END
-  END din0[25]
-  PIN din0[26]
+  END ram_din0[25]
+  PIN ram_din0[26]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 291.080 4.000 291.680 ;
     END
-  END din0[26]
-  PIN din0[27]
+  END ram_din0[26]
+  PIN ram_din0[27]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 42.200 4.000 42.800 ;
     END
-  END din0[27]
-  PIN din0[28]
+  END ram_din0[27]
+  PIN ram_din0[28]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 270.680 40.000 271.280 ;
     END
-  END din0[28]
-  PIN din0[29]
+  END ram_din0[28]
+  PIN ram_din0[29]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 114.280 40.000 114.880 ;
     END
-  END din0[29]
-  PIN din0[2]
+  END ram_din0[29]
+  PIN ram_din0[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 111.560 40.000 112.160 ;
     END
-  END din0[2]
-  PIN din0[30]
+  END ram_din0[2]
+  PIN ram_din0[30]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 232.600 4.000 233.200 ;
     END
-  END din0[30]
-  PIN din0[31]
+  END ram_din0[30]
+  PIN ram_din0[31]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 217.640 4.000 218.240 ;
     END
-  END din0[31]
-  PIN din0[3]
+  END ram_din0[31]
+  PIN ram_din0[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 65.320 4.000 65.920 ;
     END
-  END din0[3]
-  PIN din0[4]
+  END ram_din0[3]
+  PIN ram_din0[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 27.240 4.000 27.840 ;
     END
-  END din0[4]
-  PIN din0[5]
+  END ram_din0[4]
+  PIN ram_din0[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 141.480 40.000 142.080 ;
     END
-  END din0[5]
-  PIN din0[6]
+  END ram_din0[5]
+  PIN ram_din0[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 100.680 4.000 101.280 ;
     END
-  END din0[6]
-  PIN din0[7]
+  END ram_din0[6]
+  PIN ram_din0[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 172.760 40.000 173.360 ;
     END
-  END din0[7]
-  PIN din0[8]
+  END ram_din0[7]
+  PIN ram_din0[8]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 12.050 296.000 12.330 300.000 ;
     END
-  END din0[8]
-  PIN din0[9]
+  END ram_din0[8]
+  PIN ram_din0[9]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 10.210 296.000 10.490 300.000 ;
     END
-  END din0[9]
-  PIN dout0[0]
+  END ram_din0[9]
+  PIN ram_dout0[0]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 278.840 40.000 279.440 ;
     END
-  END dout0[0]
-  PIN dout0[10]
+  END ram_dout0[0]
+  PIN ram_dout0[10]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 35.970 296.000 36.250 300.000 ;
     END
-  END dout0[10]
-  PIN dout0[11]
+  END ram_dout0[10]
+  PIN ram_dout0[11]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 92.520 4.000 93.120 ;
     END
-  END dout0[11]
-  PIN dout0[12]
+  END ram_dout0[11]
+  PIN ram_dout0[12]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 167.320 4.000 167.920 ;
     END
-  END dout0[12]
-  PIN dout0[13]
+  END ram_dout0[12]
+  PIN ram_dout0[13]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 251.640 40.000 252.240 ;
     END
-  END dout0[13]
-  PIN dout0[14]
+  END ram_dout0[13]
+  PIN ram_dout0[14]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 108.840 4.000 109.440 ;
     END
-  END dout0[14]
-  PIN dout0[15]
+  END ram_dout0[14]
+  PIN ram_dout0[15]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 204.040 40.000 204.640 ;
     END
-  END dout0[15]
-  PIN dout0[16]
+  END ram_dout0[15]
+  PIN ram_dout0[16]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 20.330 0.000 20.610 4.000 ;
     END
-  END dout0[16]
-  PIN dout0[17]
+  END ram_dout0[16]
+  PIN ram_dout0[17]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 95.240 40.000 95.840 ;
     END
-  END dout0[17]
-  PIN dout0[18]
+  END ram_dout0[17]
+  PIN ram_dout0[18]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 38.730 0.000 39.010 4.000 ;
     END
-  END dout0[18]
-  PIN dout0[19]
+  END ram_dout0[18]
+  PIN ram_dout0[19]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 253.000 4.000 253.600 ;
     END
-  END dout0[19]
-  PIN dout0[1]
+  END ram_dout0[19]
+  PIN ram_dout0[1]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 36.890 0.000 37.170 4.000 ;
     END
-  END dout0[1]
-  PIN dout0[20]
+  END ram_dout0[1]
+  PIN ram_dout0[20]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 53.080 40.000 53.680 ;
     END
-  END dout0[20]
-  PIN dout0[21]
+  END ram_dout0[20]
+  PIN ram_dout0[21]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 176.840 40.000 177.440 ;
     END
-  END dout0[21]
-  PIN dout0[22]
+  END ram_dout0[21]
+  PIN ram_dout0[22]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 274.760 40.000 275.360 ;
     END
-  END dout0[22]
-  PIN dout0[23]
+  END ram_dout0[22]
+  PIN ram_dout0[23]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 213.560 4.000 214.160 ;
     END
-  END dout0[23]
-  PIN dout0[24]
+  END ram_dout0[23]
+  PIN ram_dout0[24]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 197.240 40.000 197.840 ;
     END
-  END dout0[24]
-  PIN dout0[25]
+  END ram_dout0[24]
+  PIN ram_dout0[25]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 76.200 40.000 76.800 ;
     END
-  END dout0[25]
-  PIN dout0[26]
+  END ram_dout0[25]
+  PIN ram_dout0[26]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 209.480 4.000 210.080 ;
     END
-  END dout0[26]
-  PIN dout0[27]
+  END ram_dout0[26]
+  PIN ram_dout0[27]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 88.440 4.000 89.040 ;
     END
-  END dout0[27]
-  PIN dout0[28]
+  END ram_dout0[27]
+  PIN ram_dout0[28]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 123.800 4.000 124.400 ;
     END
-  END dout0[28]
-  PIN dout0[29]
+  END ram_dout0[28]
+  PIN ram_dout0[29]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 25.850 296.000 26.130 300.000 ;
     END
-  END dout0[29]
-  PIN dout0[2]
+  END ram_dout0[29]
+  PIN ram_dout0[2]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 30.450 296.000 30.730 300.000 ;
     END
-  END dout0[2]
-  PIN dout0[30]
+  END ram_dout0[2]
+  PIN ram_dout0[30]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 236.680 4.000 237.280 ;
     END
-  END dout0[30]
-  PIN dout0[31]
+  END ram_dout0[30]
+  PIN ram_dout0[31]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 21.800 40.000 22.400 ;
     END
-  END dout0[31]
-  PIN dout0[3]
+  END ram_dout0[31]
+  PIN ram_dout0[3]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 272.040 4.000 272.640 ;
     END
-  END dout0[3]
-  PIN dout0[4]
+  END ram_dout0[3]
+  PIN ram_dout0[4]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 20.330 296.000 20.610 300.000 ;
     END
-  END dout0[4]
-  PIN dout0[5]
+  END ram_dout0[4]
+  PIN ram_dout0[5]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 36.000 255.720 40.000 256.320 ;
     END
-  END dout0[5]
-  PIN dout0[6]
+  END ram_dout0[5]
+  PIN ram_dout0[6]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 34.130 0.000 34.410 4.000 ;
     END
-  END dout0[6]
-  PIN dout0[7]
+  END ram_dout0[6]
+  PIN ram_dout0[7]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 23.160 4.000 23.760 ;
     END
-  END dout0[7]
-  PIN dout0[8]
+  END ram_dout0[7]
+  PIN ram_dout0[8]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 171.400 4.000 172.000 ;
     END
-  END dout0[8]
-  PIN dout0[9]
+  END ram_dout0[8]
+  PIN ram_dout0[9]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 0.000 69.400 4.000 70.000 ;
     END
-  END dout0[9]
+  END ram_dout0[9]
+  PIN ram_web0
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 2.760 4.000 3.360 ;
+    END
+  END ram_web0
+  PIN ram_wmask0[0]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 36.000 153.720 40.000 154.320 ;
+    END
+  END ram_wmask0[0]
+  PIN ram_wmask0[1]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 127.880 4.000 128.480 ;
+    END
+  END ram_wmask0[1]
+  PIN ram_wmask0[2]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 96.600 4.000 97.200 ;
+    END
+  END ram_wmask0[2]
+  PIN ram_wmask0[3]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 36.000 262.520 40.000 263.120 ;
+    END
+  END ram_wmask0[3]
   PIN vccd1
     DIRECTION INPUT ;
     USE POWER ;
@@ -632,7 +672,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 2.760 4.000 3.360 ;
+        RECT 36.000 59.880 40.000 60.480 ;
     END
   END wb_clk_i
   PIN wb_rst_i
@@ -640,7 +680,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 153.720 40.000 154.320 ;
+        RECT 0.000 221.720 4.000 222.320 ;
     END
   END wb_rst_i
   PIN wbs_ack_o
@@ -648,7 +688,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 127.880 4.000 128.480 ;
+        RECT 36.000 80.280 40.000 80.880 ;
     END
   END wbs_ack_o
   PIN wbs_adr_i[0]
@@ -656,7 +696,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 96.600 4.000 97.200 ;
+        RECT 0.000 57.160 4.000 57.760 ;
     END
   END wbs_adr_i[0]
   PIN wbs_adr_i[10]
@@ -664,7 +704,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 262.520 40.000 263.120 ;
+        RECT 36.000 212.200 40.000 212.800 ;
     END
   END wbs_adr_i[10]
   PIN wbs_adr_i[11]
@@ -672,15 +712,15 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 59.880 40.000 60.480 ;
+        RECT 0.000 201.320 4.000 201.920 ;
     END
   END wbs_adr_i[11]
   PIN wbs_adr_i[12]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 0.000 221.720 4.000 222.320 ;
+      LAYER met2 ;
+        RECT 4.690 0.000 4.970 4.000 ;
     END
   END wbs_adr_i[12]
   PIN wbs_adr_i[13]
@@ -688,7 +728,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 80.280 40.000 80.880 ;
+        RECT 36.000 1.400 40.000 2.000 ;
     END
   END wbs_adr_i[13]
   PIN wbs_adr_i[14]
@@ -696,7 +736,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 57.160 4.000 57.760 ;
+        RECT 36.000 130.600 40.000 131.200 ;
     END
   END wbs_adr_i[14]
   PIN wbs_adr_i[15]
@@ -704,7 +744,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 212.200 40.000 212.800 ;
+        RECT 36.000 126.520 40.000 127.120 ;
     END
   END wbs_adr_i[15]
   PIN wbs_adr_i[16]
@@ -712,15 +752,15 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 201.320 4.000 201.920 ;
+        RECT 36.000 9.560 40.000 10.160 ;
     END
   END wbs_adr_i[16]
   PIN wbs_adr_i[17]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met2 ;
-        RECT 4.690 0.000 4.970 4.000 ;
+      LAYER met3 ;
+        RECT 0.000 29.960 4.000 30.560 ;
     END
   END wbs_adr_i[17]
   PIN wbs_adr_i[18]
@@ -728,7 +768,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 1.400 40.000 2.000 ;
+        RECT 36.000 91.160 40.000 91.760 ;
     END
   END wbs_adr_i[18]
   PIN wbs_adr_i[19]
@@ -736,7 +776,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 130.600 40.000 131.200 ;
+        RECT 0.000 115.640 4.000 116.240 ;
     END
   END wbs_adr_i[19]
   PIN wbs_adr_i[1]
@@ -744,7 +784,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 126.520 40.000 127.120 ;
+        RECT 36.000 216.280 40.000 216.880 ;
     END
   END wbs_adr_i[1]
   PIN wbs_adr_i[20]
@@ -752,15 +792,15 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 9.560 40.000 10.160 ;
+        RECT 0.000 178.200 4.000 178.800 ;
     END
   END wbs_adr_i[20]
   PIN wbs_adr_i[21]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 0.000 29.960 4.000 30.560 ;
+      LAYER met2 ;
+        RECT 23.090 296.000 23.370 300.000 ;
     END
   END wbs_adr_i[21]
   PIN wbs_adr_i[22]
@@ -768,7 +808,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 91.160 40.000 91.760 ;
+        RECT 0.000 295.160 4.000 295.760 ;
     END
   END wbs_adr_i[22]
   PIN wbs_adr_i[23]
@@ -776,7 +816,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 115.640 4.000 116.240 ;
+        RECT 36.000 87.080 40.000 87.680 ;
     END
   END wbs_adr_i[23]
   PIN wbs_adr_i[24]
@@ -784,7 +824,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 216.280 40.000 216.880 ;
+        RECT 36.000 289.720 40.000 290.320 ;
     END
   END wbs_adr_i[24]
   PIN wbs_adr_i[25]
@@ -792,15 +832,15 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 178.200 4.000 178.800 ;
+        RECT 0.000 10.920 4.000 11.520 ;
     END
   END wbs_adr_i[25]
   PIN wbs_adr_i[26]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met2 ;
-        RECT 23.090 296.000 23.370 300.000 ;
+      LAYER met3 ;
+        RECT 0.000 146.920 4.000 147.520 ;
     END
   END wbs_adr_i[26]
   PIN wbs_adr_i[27]
@@ -808,7 +848,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 295.160 4.000 295.760 ;
+        RECT 0.000 240.760 4.000 241.360 ;
     END
   END wbs_adr_i[27]
   PIN wbs_adr_i[28]
@@ -816,7 +856,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 87.080 40.000 87.680 ;
+        RECT 36.000 138.760 40.000 139.360 ;
     END
   END wbs_adr_i[28]
   PIN wbs_adr_i[29]
@@ -824,7 +864,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 289.720 40.000 290.320 ;
+        RECT 36.000 185.000 40.000 185.600 ;
     END
   END wbs_adr_i[29]
   PIN wbs_adr_i[2]
@@ -832,7 +872,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 10.920 4.000 11.520 ;
+        RECT 0.000 194.520 4.000 195.120 ;
     END
   END wbs_adr_i[2]
   PIN wbs_adr_i[30]
@@ -840,7 +880,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 146.920 4.000 147.520 ;
+        RECT 36.000 220.360 40.000 220.960 ;
     END
   END wbs_adr_i[30]
   PIN wbs_adr_i[31]
@@ -848,7 +888,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 240.760 4.000 241.360 ;
+        RECT 36.000 122.440 40.000 123.040 ;
     END
   END wbs_adr_i[31]
   PIN wbs_adr_i[3]
@@ -856,7 +896,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 138.760 40.000 139.360 ;
+        RECT 0.000 19.080 4.000 19.680 ;
     END
   END wbs_adr_i[3]
   PIN wbs_adr_i[4]
@@ -864,7 +904,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 185.000 40.000 185.600 ;
+        RECT 36.000 228.520 40.000 229.120 ;
     END
   END wbs_adr_i[4]
   PIN wbs_adr_i[5]
@@ -872,7 +912,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 194.520 4.000 195.120 ;
+        RECT 36.000 36.760 40.000 37.360 ;
     END
   END wbs_adr_i[5]
   PIN wbs_adr_i[6]
@@ -880,7 +920,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 220.360 40.000 220.960 ;
+        RECT 0.000 50.360 4.000 50.960 ;
     END
   END wbs_adr_i[6]
   PIN wbs_adr_i[7]
@@ -888,7 +928,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 122.440 40.000 123.040 ;
+        RECT 0.000 257.080 4.000 257.680 ;
     END
   END wbs_adr_i[7]
   PIN wbs_adr_i[8]
@@ -896,7 +936,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 19.080 4.000 19.680 ;
+        RECT 36.000 72.120 40.000 72.720 ;
     END
   END wbs_adr_i[8]
   PIN wbs_adr_i[9]
@@ -904,7 +944,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 228.520 40.000 229.120 ;
+        RECT 36.000 107.480 40.000 108.080 ;
     END
   END wbs_adr_i[9]
   PIN wbs_cyc_i
@@ -912,7 +952,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 36.760 40.000 37.360 ;
+        RECT 0.000 131.960 4.000 132.560 ;
     END
   END wbs_cyc_i
   PIN wbs_dat_i[0]
@@ -920,7 +960,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 50.360 4.000 50.960 ;
+        RECT 36.000 193.160 40.000 193.760 ;
     END
   END wbs_dat_i[0]
   PIN wbs_dat_i[10]
@@ -928,7 +968,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 257.080 4.000 257.680 ;
+        RECT 0.000 73.480 4.000 74.080 ;
     END
   END wbs_dat_i[10]
   PIN wbs_dat_i[11]
@@ -936,7 +976,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 72.120 40.000 72.720 ;
+        RECT 0.000 287.000 4.000 287.600 ;
     END
   END wbs_dat_i[11]
   PIN wbs_dat_i[12]
@@ -944,7 +984,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 107.480 40.000 108.080 ;
+        RECT 0.000 284.280 4.000 284.880 ;
     END
   END wbs_dat_i[12]
   PIN wbs_dat_i[13]
@@ -952,15 +992,15 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 131.960 4.000 132.560 ;
+        RECT 0.000 140.120 4.000 140.720 ;
     END
   END wbs_dat_i[13]
   PIN wbs_dat_i[14]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 36.000 193.160 40.000 193.760 ;
+      LAYER met2 ;
+        RECT 18.490 0.000 18.770 4.000 ;
     END
   END wbs_dat_i[14]
   PIN wbs_dat_i[15]
@@ -968,7 +1008,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 73.480 4.000 74.080 ;
+        RECT 36.000 149.640 40.000 150.240 ;
     END
   END wbs_dat_i[15]
   PIN wbs_dat_i[16]
@@ -976,7 +1016,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 287.000 4.000 287.600 ;
+        RECT 36.000 17.720 40.000 18.320 ;
     END
   END wbs_dat_i[16]
   PIN wbs_dat_i[17]
@@ -984,7 +1024,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 284.280 4.000 284.880 ;
+        RECT 36.000 266.600 40.000 267.200 ;
     END
   END wbs_dat_i[17]
   PIN wbs_dat_i[18]
@@ -992,23 +1032,23 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 140.120 4.000 140.720 ;
+        RECT 36.000 231.240 40.000 231.840 ;
     END
   END wbs_dat_i[18]
   PIN wbs_dat_i[19]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met2 ;
-        RECT 18.490 0.000 18.770 4.000 ;
+      LAYER met3 ;
+        RECT 0.000 77.560 4.000 78.160 ;
     END
   END wbs_dat_i[19]
   PIN wbs_dat_i[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 36.000 149.640 40.000 150.240 ;
+      LAYER met2 ;
+        RECT 12.970 0.000 13.250 4.000 ;
     END
   END wbs_dat_i[1]
   PIN wbs_dat_i[20]
@@ -1016,7 +1056,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 17.720 40.000 18.320 ;
+        RECT 36.000 170.040 40.000 170.640 ;
     END
   END wbs_dat_i[20]
   PIN wbs_dat_i[21]
@@ -1024,7 +1064,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 266.600 40.000 267.200 ;
+        RECT 0.000 155.080 4.000 155.680 ;
     END
   END wbs_dat_i[21]
   PIN wbs_dat_i[22]
@@ -1032,7 +1072,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 231.240 40.000 231.840 ;
+        RECT 0.000 225.800 4.000 226.400 ;
     END
   END wbs_dat_i[22]
   PIN wbs_dat_i[23]
@@ -1040,15 +1080,15 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 77.560 4.000 78.160 ;
+        RECT 36.000 199.960 40.000 200.560 ;
     END
   END wbs_dat_i[23]
   PIN wbs_dat_i[24]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met2 ;
-        RECT 12.970 0.000 13.250 4.000 ;
+      LAYER met3 ;
+        RECT 0.000 182.280 4.000 182.880 ;
     END
   END wbs_dat_i[24]
   PIN wbs_dat_i[25]
@@ -1056,7 +1096,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 170.040 40.000 170.640 ;
+        RECT 36.000 40.840 40.000 41.440 ;
     END
   END wbs_dat_i[25]
   PIN wbs_dat_i[26]
@@ -1064,23 +1104,23 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 155.080 4.000 155.680 ;
+        RECT 36.000 258.440 40.000 259.040 ;
     END
   END wbs_dat_i[26]
   PIN wbs_dat_i[27]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 0.000 225.800 4.000 226.400 ;
+      LAYER met2 ;
+        RECT 7.450 296.000 7.730 300.000 ;
     END
   END wbs_dat_i[27]
   PIN wbs_dat_i[28]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 36.000 199.960 40.000 200.560 ;
+      LAYER met2 ;
+        RECT 31.370 0.000 31.650 4.000 ;
     END
   END wbs_dat_i[28]
   PIN wbs_dat_i[29]
@@ -1088,7 +1128,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 182.280 4.000 182.880 ;
+        RECT 36.000 180.920 40.000 181.520 ;
     END
   END wbs_dat_i[29]
   PIN wbs_dat_i[2]
@@ -1096,7 +1136,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 40.840 40.000 41.440 ;
+        RECT 36.000 63.960 40.000 64.560 ;
     END
   END wbs_dat_i[2]
   PIN wbs_dat_i[30]
@@ -1104,31 +1144,31 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 258.440 40.000 259.040 ;
+        RECT 36.000 134.680 40.000 135.280 ;
     END
   END wbs_dat_i[30]
   PIN wbs_dat_i[31]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met2 ;
-        RECT 7.450 296.000 7.730 300.000 ;
+      LAYER met3 ;
+        RECT 0.000 190.440 4.000 191.040 ;
     END
   END wbs_dat_i[31]
   PIN wbs_dat_i[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met2 ;
-        RECT 31.370 0.000 31.650 4.000 ;
+      LAYER met3 ;
+        RECT 36.000 99.320 40.000 99.920 ;
     END
   END wbs_dat_i[3]
   PIN wbs_dat_i[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 36.000 180.920 40.000 181.520 ;
+      LAYER met2 ;
+        RECT 15.730 0.000 16.010 4.000 ;
     END
   END wbs_dat_i[4]
   PIN wbs_dat_i[5]
@@ -1136,7 +1176,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 63.960 40.000 64.560 ;
+        RECT 36.000 13.640 40.000 14.240 ;
     END
   END wbs_dat_i[5]
   PIN wbs_dat_i[6]
@@ -1144,7 +1184,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 134.680 40.000 135.280 ;
+        RECT 36.000 161.880 40.000 162.480 ;
     END
   END wbs_dat_i[6]
   PIN wbs_dat_i[7]
@@ -1152,7 +1192,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 190.440 4.000 191.040 ;
+        RECT 36.000 282.920 40.000 283.520 ;
     END
   END wbs_dat_i[7]
   PIN wbs_dat_i[8]
@@ -1160,15 +1200,15 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 99.320 40.000 99.920 ;
+        RECT 36.000 235.320 40.000 235.920 ;
     END
   END wbs_dat_i[8]
   PIN wbs_dat_i[9]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met2 ;
-        RECT 15.730 0.000 16.010 4.000 ;
+      LAYER met3 ;
+        RECT 36.000 103.400 40.000 104.000 ;
     END
   END wbs_dat_i[9]
   PIN wbs_dat_o[0]
@@ -1176,7 +1216,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 13.640 40.000 14.240 ;
+        RECT 0.000 81.640 4.000 82.240 ;
     END
   END wbs_dat_o[0]
   PIN wbs_dat_o[10]
@@ -1184,15 +1224,15 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 161.880 40.000 162.480 ;
+        RECT 36.000 189.080 40.000 189.680 ;
     END
   END wbs_dat_o[10]
   PIN wbs_dat_o[11]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 36.000 282.920 40.000 283.520 ;
+      LAYER met2 ;
+        RECT 1.930 0.000 2.210 4.000 ;
     END
   END wbs_dat_o[11]
   PIN wbs_dat_o[12]
@@ -1200,7 +1240,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 235.320 40.000 235.920 ;
+        RECT 36.000 247.560 40.000 248.160 ;
     END
   END wbs_dat_o[12]
   PIN wbs_dat_o[13]
@@ -1208,7 +1248,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 103.400 40.000 104.000 ;
+        RECT 36.000 297.880 40.000 298.480 ;
     END
   END wbs_dat_o[13]
   PIN wbs_dat_o[14]
@@ -1216,23 +1256,23 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 81.640 4.000 82.240 ;
+        RECT 36.000 118.360 40.000 118.960 ;
     END
   END wbs_dat_o[14]
   PIN wbs_dat_o[15]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 36.000 189.080 40.000 189.680 ;
+      LAYER met2 ;
+        RECT 33.210 296.000 33.490 300.000 ;
     END
   END wbs_dat_o[15]
   PIN wbs_dat_o[16]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
-      LAYER met2 ;
-        RECT 1.930 0.000 2.210 4.000 ;
+      LAYER met3 ;
+        RECT 0.000 112.920 4.000 113.520 ;
     END
   END wbs_dat_o[16]
   PIN wbs_dat_o[17]
@@ -1240,7 +1280,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 247.560 40.000 248.160 ;
+        RECT 0.000 119.720 4.000 120.320 ;
     END
   END wbs_dat_o[17]
   PIN wbs_dat_o[18]
@@ -1248,23 +1288,23 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 297.880 40.000 298.480 ;
+        RECT 36.000 49.000 40.000 49.600 ;
     END
   END wbs_dat_o[18]
   PIN wbs_dat_o[19]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 36.000 118.360 40.000 118.960 ;
+      LAYER met2 ;
+        RECT 0.090 0.000 0.370 4.000 ;
     END
   END wbs_dat_o[19]
   PIN wbs_dat_o[1]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
-      LAYER met2 ;
-        RECT 33.210 296.000 33.490 300.000 ;
+      LAYER met3 ;
+        RECT 0.000 15.000 4.000 15.600 ;
     END
   END wbs_dat_o[1]
   PIN wbs_dat_o[20]
@@ -1272,7 +1312,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 112.920 4.000 113.520 ;
+        RECT 0.000 136.040 4.000 136.640 ;
     END
   END wbs_dat_o[20]
   PIN wbs_dat_o[21]
@@ -1280,7 +1320,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 119.720 4.000 120.320 ;
+        RECT 0.000 198.600 4.000 199.200 ;
     END
   END wbs_dat_o[21]
   PIN wbs_dat_o[22]
@@ -1288,31 +1328,31 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 49.000 40.000 49.600 ;
+        RECT 0.000 267.960 4.000 268.560 ;
     END
   END wbs_dat_o[22]
   PIN wbs_dat_o[23]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
-      LAYER met2 ;
-        RECT 0.090 0.000 0.370 4.000 ;
+      LAYER met3 ;
+        RECT 0.000 104.760 4.000 105.360 ;
     END
   END wbs_dat_o[23]
   PIN wbs_dat_o[24]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 0.000 15.000 4.000 15.600 ;
+      LAYER met2 ;
+        RECT 23.090 0.000 23.370 4.000 ;
     END
   END wbs_dat_o[24]
   PIN wbs_dat_o[25]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 0.000 136.040 4.000 136.640 ;
+      LAYER met2 ;
+        RECT 7.450 0.000 7.730 4.000 ;
     END
   END wbs_dat_o[25]
   PIN wbs_dat_o[26]
@@ -1320,7 +1360,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 198.600 4.000 199.200 ;
+        RECT 0.000 299.240 4.000 299.840 ;
     END
   END wbs_dat_o[26]
   PIN wbs_dat_o[27]
@@ -1328,7 +1368,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 267.960 4.000 268.560 ;
+        RECT 0.000 259.800 4.000 260.400 ;
     END
   END wbs_dat_o[27]
   PIN wbs_dat_o[28]
@@ -1336,7 +1376,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 104.760 4.000 105.360 ;
+        RECT 36.000 32.680 40.000 33.280 ;
     END
   END wbs_dat_o[28]
   PIN wbs_dat_o[29]
@@ -1344,15 +1384,15 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 23.090 0.000 23.370 4.000 ;
+        RECT 17.570 296.000 17.850 300.000 ;
     END
   END wbs_dat_o[29]
   PIN wbs_dat_o[2]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
-      LAYER met2 ;
-        RECT 7.450 0.000 7.730 4.000 ;
+      LAYER met3 ;
+        RECT 36.000 157.800 40.000 158.400 ;
     END
   END wbs_dat_o[2]
   PIN wbs_dat_o[30]
@@ -1360,7 +1400,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 299.240 4.000 299.840 ;
+        RECT 0.000 142.840 4.000 143.440 ;
     END
   END wbs_dat_o[30]
   PIN wbs_dat_o[31]
@@ -1368,23 +1408,23 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 259.800 4.000 260.400 ;
+        RECT 0.000 38.120 4.000 38.720 ;
     END
   END wbs_dat_o[31]
   PIN wbs_dat_o[3]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 36.000 32.680 40.000 33.280 ;
+      LAYER met2 ;
+        RECT 25.850 0.000 26.130 4.000 ;
     END
   END wbs_dat_o[3]
   PIN wbs_dat_o[4]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
-      LAYER met2 ;
-        RECT 17.570 296.000 17.850 300.000 ;
+      LAYER met3 ;
+        RECT 36.000 5.480 40.000 6.080 ;
     END
   END wbs_dat_o[4]
   PIN wbs_dat_o[5]
@@ -1392,7 +1432,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 157.800 40.000 158.400 ;
+        RECT 0.000 34.040 4.000 34.640 ;
     END
   END wbs_dat_o[5]
   PIN wbs_dat_o[6]
@@ -1400,7 +1440,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 142.840 4.000 143.440 ;
+        RECT 36.000 243.480 40.000 244.080 ;
     END
   END wbs_dat_o[6]
   PIN wbs_dat_o[7]
@@ -1408,7 +1448,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 38.120 4.000 38.720 ;
+        RECT 36.000 44.920 40.000 45.520 ;
     END
   END wbs_dat_o[7]
   PIN wbs_dat_o[8]
@@ -1416,15 +1456,15 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 25.850 0.000 26.130 4.000 ;
+        RECT 4.690 296.000 4.970 300.000 ;
     END
   END wbs_dat_o[8]
   PIN wbs_dat_o[9]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 36.000 5.480 40.000 6.080 ;
+      LAYER met2 ;
+        RECT 1.930 296.000 2.210 300.000 ;
     END
   END wbs_dat_o[9]
   PIN wbs_sel_i[0]
@@ -1432,7 +1472,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 34.040 4.000 34.640 ;
+        RECT 0.000 174.120 4.000 174.720 ;
     END
   END wbs_sel_i[0]
   PIN wbs_sel_i[1]
@@ -1440,7 +1480,7 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 243.480 40.000 244.080 ;
+        RECT 0.000 205.400 4.000 206.000 ;
     END
   END wbs_sel_i[1]
   PIN wbs_sel_i[2]
@@ -1448,23 +1488,23 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 36.000 44.920 40.000 45.520 ;
+        RECT 36.000 68.040 40.000 68.640 ;
     END
   END wbs_sel_i[2]
   PIN wbs_sel_i[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met2 ;
-        RECT 4.690 296.000 4.970 300.000 ;
+      LAYER met3 ;
+        RECT 0.000 46.280 4.000 46.880 ;
     END
   END wbs_sel_i[3]
   PIN wbs_stb_i
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met2 ;
-        RECT 1.930 296.000 2.210 300.000 ;
+      LAYER met3 ;
+        RECT 0.000 151.000 4.000 151.600 ;
     END
   END wbs_stb_i
   PIN wbs_we_i
@@ -1472,54 +1512,14 @@ MACRO wb_openram_wrapper
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 0.000 174.120 4.000 174.720 ;
-    END
-  END wbs_we_i
-  PIN web0
-    DIRECTION OUTPUT TRISTATE ;
-    USE SIGNAL ;
-    PORT
-      LAYER met3 ;
-        RECT 0.000 205.400 4.000 206.000 ;
-    END
-  END web0
-  PIN wmask0[0]
-    DIRECTION OUTPUT TRISTATE ;
-    USE SIGNAL ;
-    PORT
-      LAYER met3 ;
-        RECT 36.000 68.040 40.000 68.640 ;
-    END
-  END wmask0[0]
-  PIN wmask0[1]
-    DIRECTION OUTPUT TRISTATE ;
-    USE SIGNAL ;
-    PORT
-      LAYER met3 ;
-        RECT 0.000 46.280 4.000 46.880 ;
-    END
-  END wmask0[1]
-  PIN wmask0[2]
-    DIRECTION OUTPUT TRISTATE ;
-    USE SIGNAL ;
-    PORT
-      LAYER met3 ;
-        RECT 0.000 151.000 4.000 151.600 ;
-    END
-  END wmask0[2]
-  PIN wmask0[3]
-    DIRECTION OUTPUT TRISTATE ;
-    USE SIGNAL ;
-    PORT
-      LAYER met3 ;
         RECT 36.000 208.120 40.000 208.720 ;
     END
-  END wmask0[3]
+  END wbs_we_i
   OBS
       LAYER li1 ;
-        RECT 3.825 10.795 39.875 294.015 ;
+        RECT 4.285 10.795 39.875 288.405 ;
       LAYER met1 ;
-        RECT 0.070 10.640 39.950 294.060 ;
+        RECT 0.070 10.640 39.950 288.560 ;
       LAYER met2 ;
         RECT 0.100 295.720 1.650 299.725 ;
         RECT 2.490 295.720 4.410 299.725 ;
@@ -1863,10 +1863,11 @@ MACRO wb_openram_wrapper
         RECT 4.400 2.360 35.600 2.400 ;
         RECT 4.000 1.550 35.600 2.360 ;
       LAYER met4 ;
-        RECT 6.735 10.640 9.145 288.560 ;
+        RECT 7.655 10.640 9.145 288.560 ;
         RECT 11.545 10.640 13.970 288.560 ;
         RECT 16.370 10.640 18.795 288.560 ;
-        RECT 21.195 10.640 21.785 288.560 ;
+        RECT 21.195 10.640 23.625 288.560 ;
+        RECT 26.025 10.640 27.305 288.560 ;
   END
 END wb_openram_wrapper
 END LIBRARY
