@@ -43,7 +43,6 @@ set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
 set ::env(RUN_CVC) 0
 
 set ::env(CELL_PAD) 4
-set ::env(RUN_SPEF_EXTRACTION) 0
 
 set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
 if { [file exists $filename] == 1} {
