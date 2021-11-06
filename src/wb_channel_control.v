@@ -19,16 +19,14 @@
 module wb_channel_control 
 #(
     parameter BASE_ADDR = 32'h3000_0000,
-    parameter ADDR_WIDTH = 8
+    parameter ADDR_WIDTH = 8,
+    parameter READ_ONLY = 1
 )
 (
 `ifdef USE_POWER_PINS
     inout vccd1,	// User area 1 1.8V supply
     inout vssd1,	// User area 1 digital ground
 `endif
-
-    // Control signal
-    input           read_only_i,
 
     // Wishbone port A
     input           wb_clk_i,
@@ -41,8 +39,8 @@ module wb_channel_control
 
 
     // OpenRAM interface: RW
-    output                      ram_csb,       // active low chip select
-    output                      ram_web        // active low write control
+    output          ram_csb,       // active low chip select
+    output          ram_web        // active low write control
 );
 
 parameter ADDR_LO_MASK = (1 << ADDR_WIDTH) - 1;
@@ -65,10 +63,10 @@ always @(negedge wb_clk_i) begin
 end
 
 wire ignore_write;
-assign ignore_write = read_only_i && wbs_we_i;
+assign ignore_write = READ_ONLY && wbs_we_i;
 
 assign ram_csb = !channel_cs_r || ignore_write;
-assign ram_web = !wbs_we_i || read_only_i;
+assign ram_web = !wbs_we_i || READ_ONLY;
 
 assign wbs_ack_o = channel_wbs_ack_r && channel_cs;
 
