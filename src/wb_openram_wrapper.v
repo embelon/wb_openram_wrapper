@@ -17,7 +17,8 @@
 
 module wb_openram_wrapper 
 #(
-    parameter BASE_ADDR = 32'h3000_0000,
+    parameter WB0_BASE_ADDR = 32'h3000_0000,
+    parameter WB1_BASE_ADDR = 32'h3000_0000,
     parameter ADDR_WIDTH = 8
 )
 (
@@ -26,17 +27,32 @@ module wb_openram_wrapper
     inout vssd1,	// User area 1 digital ground
 `endif
 
-    // Wishbone port A
-    input           wb_clk_i,
-    input           wb_rst_i,
-    input           wbs_stb_i,
-    input           wbs_cyc_i,
-    input           wbs_we_i,
-    input   [3:0]   wbs_sel_i,
-    input   [31:0]  wbs_dat_i,
-    input   [31:0]  wbs_adr_i,
-    output          wbs_ack_o,
-    output  [31:0]  wbs_dat_o,
+    // Select writable WB port
+    input           writable_port;
+
+    // Wishbone port 0
+    input           wb0_clk_i,
+    input           wb0_rst_i,
+    input           wbs0_stb_i,
+    input           wbs0_cyc_i,
+    input           wbs0_we_i,
+    input   [3:0]   wbs0_sel_i,
+    input   [31:0]  wbs0_dat_i,
+    input   [31:0]  wbs0_adr_i,
+    output          wbs0_ack_o,
+    output  [31:0]  wbs0_dat_o,
+
+    // Wishbone port 1
+    input           wb1_clk_i,
+    input           wb1_rst_i,
+    input           wbs1_stb_i,
+    input           wbs1_cyc_i,
+    input           wbs1_we_i,
+    input   [3:0]   wbs1_sel_i,
+    input   [31:0]  wbs1_dat_i,
+    input   [31:0]  wbs1_adr_i,
+    output          wbs1_ack_o,
+    output  [31:0]  wbs1_dat_o,
 
     // OpenRAM interface - almost dual port: RW + R
     // Port 0: RW
@@ -45,45 +61,78 @@ module wb_openram_wrapper
     output                      ram_web0,       // active low write control
     output  [3:0]              	ram_wmask0,     // write (byte) mask
     output  [ADDR_WIDTH-1:0]    ram_addr0,
-    input   [31:0]              ram_din0,
-    output  [31:0]              ram_dout0
-/*    
+    output  [31:0]              ram_din0,       // output = connect to openram input (din)
+    input   [31:0]              ram_dout0,      // input = connect to openram output (dout)
+    
     // Port 1: R
     output                      ram_clk1,       // clock
     output                      ram_csb1,       // active low chip select
     output  [ADDR_WIDTH-1:0]    ram_addr1,  
-    output  [31:0]              ram_dout1
-*/    
+    input   [31:0]              ram_dout1       // input = connect to openram output (dout)   
 );
 
-parameter ADDR_LO_MASK = (1 << ADDR_WIDTH) - 1;
-parameter ADDR_HI_MASK = 32'hffff_ffff - ADDR_LO_MASK;
+wb_channel_control channel0
+#(
+    .BASE_ADDR(WB0_BASE_ADDR),
+    .ADDR_WIDTH(ADDR_WIDTH)
+)
+(
+`ifdef USE_POWER_PINS
+    .vccd1 (vccd1),	    // User area 1 1.8V supply
+    .vssd1 (vssd1),	    // User area 1 digital ground
+`endif
 
-wire ram_cs;
-assign ram_cs = wbs_stb_i && wbs_cyc_i && ((wbs_adr_i & ADDR_HI_MASK) == BASE_ADDR) && !wb_rst_i;
+    .read_only_i    (writable_port),
 
-reg ram_cs_r;
-reg ram_wbs_ack_r;
-always @(negedge wb_clk_i) begin
-    if (wb_rst_i) begin
-        ram_cs_r <= 0;
-        ram_wbs_ack_r <= 0;
-    end
-    else begin
-        ram_cs_r <= !ram_cs_r && ram_cs;
-        ram_wbs_ack_r <= ram_cs_r;
-    end
-end
-     
-assign ram_clk0 = wb_clk_i;
-assign ram_csb0 = !ram_cs_r;
-assign ram_web0 = ~wbs_we_i;
-assign ram_wmask0 = wbs_sel_i;
-assign ram_addr0 = wbs_adr_i[ADDR_WIDTH-1:0];
-assign ram_dout0 = wbs_dat_i;
+    // Wishbone interface
+    .wb_clk_i       (wb0_clk_i),
+    .wb_rst_i       (wb0_rst_i),
+    .wbs_stb_i      (wbs0_stb_i),
+    .wbs_cyc_i      (wbs0_cyc_i),
+    .wbs_we_i       (wbs0_we_i),
+    .wbs_adr_i      (wbs0_adr_i),
+    .wbs_ack_o      (wbs0_ack_o),
 
-assign wbs_dat_o = ram_din0;
-assign wbs_ack_o = ram_wbs_ack_r && ram_cs;
+    // OpenRAM interface
+    .ram_csb        (ram_csb0),     // active low chip select
+    .ram_web        (ram_web0)      // active low write control
+);
+   
+assign ram_clk0 = wb0_clk_i;
+assign ram_wmask0 = wbs0_sel_i;
+assign ram_addr0 = wbs0_adr_i[ADDR_WIDTH-1:0];
+
+
+wb_channel_control channel1
+#(
+    .BASE_ADDR(WB1_BASE_ADDR),
+    .ADDR_WIDTH(ADDR_WIDTH)
+)
+(
+`ifdef USE_POWER_PINS
+    .vccd1 (vccd1),	    // User area 1 1.8V supply
+    .vssd1 (vssd1),	    // User area 1 digital ground
+`endif
+
+    .read_only_i    (!writable_port),
+
+    // Wishbone interface
+    .wb_clk_i       (wb1_clk_i),
+    .wb_rst_i       (wb1_rst_i),
+    .wbs_stb_i      (wbs1_stb_i),
+    .wbs_cyc_i      (wbs1_cyc_i),
+    .wbs_we_i       (wbs1_we_i),
+    .wbs_adr_i      (wbs1_adr_i),
+    .wbs_ack_o      (wbs1_ack_o),
+
+    // OpenRAM interface
+    .ram_csb        (ram_csb1),     // active low chip select
+    .ram_web        (ram_web1)      // active low write control
+);
+   
+assign ram_clk1 = wb1_clk_i;
+assign ram_wmask0 = wbs1_sel_i;
+assign ram_addr0 = wbs1_adr_i[ADDR_WIDTH-1:0];
 
 endmodule	// wb_openram_wrapper
 

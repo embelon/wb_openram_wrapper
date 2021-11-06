@@ -23,7 +23,7 @@ set ::env(VERILOG_FILES) [glob $::env(DESIGN_DIR)/src/*.v]
 set ::env(SYNTH_DEFINES) "MPRJ_IO_PADS=38"
 
 # Fill this
-set ::env(CLOCK_PORT) "wb_clk_i"
+set ::env(CLOCK_PORT) [list {wb0_clk_i wb1_clk_i}]
 
 # macro needs to work inside Caravel, so can't be core and can't use metal 5
 set ::env(DESIGN_IS_CORE) 0
