@@ -132,6 +132,7 @@ wire channel1_ack_o;
 assign channel1_rst_i = !writable_port ? wb1_rst_i : wb0_rst_i;
 assign channel1_stb_i = !writable_port ? wbs1_stb_i : wbs0_stb_i;
 assign channel1_cyc_i = !writable_port ? wbs1_cyc_i : wbs0_cyc_i;
+assign channel1_we_i = !writable_port ? wbs1_we_i : wbs0_we_i;
 assign channel1_adr_i = !writable_port ? wbs1_adr_i : wbs0_adr_i;
 
 // Connect signals going directly from Wishbone 0 or 1 to OpenRAM port 1 (R)
@@ -155,7 +156,7 @@ wb_channel_control
     .wb_rst_i       (channel1_rst_i),
     .wbs_stb_i      (channel1_stb_i),
     .wbs_cyc_i      (channel1_cyc_i),
-    .wbs_we_i       (1'b0),
+    .wbs_we_i       (channel1_we_i),
     .wbs_adr_i      (channel1_adr_i),
     .wbs_ack_o      (channel1_ack_o),
 
