@@ -28,7 +28,7 @@ module wb_openram_wrapper
 `endif
 
     // Select writable WB port
-    input           writable_port;
+    input           writable_port,
 
     // Wishbone port 0
     input           wb0_clk_i,
@@ -71,30 +71,33 @@ module wb_openram_wrapper
     input   [31:0]              ram_dout1       // input = connect to openram output (dout)   
 );
 
+// Signals for Channel 0 Control block
 wire channel0_rst_i;
 wire channel0_stb_i;
 wire channel0_cyc_i;
 wire channel0_we_i;
-wire [ADDR_WIDTH-1:0] channel0_adr_i;
+wire [31:0] channel0_adr_i;
 wire channel0_ack_o;
 
-assign ram_clk0 = writable_port ? wb1_clk_i : wb0_clk_i;
+// Connect signals going from Wishbone 0 or 1 to Channel 0 Control block
 assign channel0_rst_i = writable_port ? wb1_rst_i : wb0_rst_i;
 assign channel0_stb_i = writable_port ? wbs1_stb_i : wbs0_stb_i;
 assign channel0_cyc_i = writable_port ? wbs1_cyc_i : wbs0_cyc_i;
 assign channel0_we_i = writable_port ? wbs1_we_i : wbs0_we_i;
-assign ram_wmask0 = writable_port ? wbs1_sel_i : wbs0_sel_i;
-assign ram_din0 = writable_port ? wbs1_dat_i : wbs0_dat_i;
 assign channel0_adr_i = writable_port ? wbs1_adr_i : wbs0_adr_i;
-assign ram_dout0 = writable_port ? wbs1_dat_o : wbs0_dat_o;
-assign channel0_ack_o = writable_port ? wbs1_ack_o : wbs0_ack_o;
 
-wb_channel_control channel0
+// Connect signals going directly from Wishbone 0 or 1 to OpenRAM port 0 (RW)
+assign ram_clk0 = writable_port ? wb1_clk_i : wb0_clk_i;
+assign ram_wmask0 = writable_port ? wbs1_sel_i : wbs0_sel_i;
+assign ram_addr0 = channel0_adr_i[ADDR_WIDTH-1:0];
+assign ram_din0 = writable_port ? wbs1_dat_i : wbs0_dat_i;
+
+wb_channel_control
 #(
     .BASE_ADDR(WB0_BASE_ADDR),
     .ADDR_WIDTH(ADDR_WIDTH),
     .READ_ONLY(0)
-)
+) channel0
 (
 `ifdef USE_POWER_PINS
     .vccd1 (vccd1),	    // User area 1 1.8V supply
@@ -114,31 +117,33 @@ wb_channel_control channel0
     .ram_csb        (ram_csb0),     // active low chip select
     .ram_web        (ram_web0)      // active low write control
 );
-   
-assign ram_addr0 = channel0_adr_i[ADDR_WIDTH-1:0];
 
 
 
+// Signals for Channel 1 Control block
 wire channel1_rst_i;
 wire channel1_stb_i;
 wire channel1_cyc_i;
-wire [ADDR_WIDTH-1:0] channel1_adr_i;
+wire channel1_we_i;
+wire [31:0] channel1_adr_i;
 wire channel1_ack_o;
 
-assign ram_clk1 = !writable_port ? wb1_clk_i : wb0_clk_i;
+// Connect signals going from Wishbone 0 or 1 to Channel 1 Control block
 assign channel1_rst_i = !writable_port ? wb1_rst_i : wb0_rst_i;
 assign channel1_stb_i = !writable_port ? wbs1_stb_i : wbs0_stb_i;
 assign channel1_cyc_i = !writable_port ? wbs1_cyc_i : wbs0_cyc_i;
 assign channel1_adr_i = !writable_port ? wbs1_adr_i : wbs0_adr_i;
-assign ram_dout1 = !writable_port ? wbs1_dat_o : wbs0_dat_o;
-assign channel1_ack_o = !writable_port ? wbs1_ack_o : wbs0_ack_o;
 
-wb_channel_control channel1
+// Connect signals going directly from Wishbone 0 or 1 to OpenRAM port 1 (R)
+assign ram_clk1 = !writable_port ? wb1_clk_i : wb0_clk_i;
+assign ram_addr1 = channel1_adr_i[ADDR_WIDTH-1:0];
+
+wb_channel_control 
 #(
     .BASE_ADDR(WB1_BASE_ADDR),
     .ADDR_WIDTH(ADDR_WIDTH),
     .READ_ONLY(1)
-)
+) channel1
 (
 `ifdef USE_POWER_PINS
     .vccd1 (vccd1),	    // User area 1 1.8V supply
@@ -150,7 +155,7 @@ wb_channel_control channel1
     .wb_rst_i       (channel1_rst_i),
     .wbs_stb_i      (channel1_stb_i),
     .wbs_cyc_i      (channel1_cyc_i),
-    .wbs_we_i       (0),
+    .wbs_we_i       (1'b0),
     .wbs_adr_i      (channel1_adr_i),
     .wbs_ack_o      (channel1_ack_o),
 
@@ -159,8 +164,14 @@ wb_channel_control channel1
 //    .ram_web        ()      // active low write control
 );
    
-assign ram_addr1 = channel1_adr_i[ADDR_WIDTH-1:0];
 
+// Connect signals going from OpenRAM port 0 or 1 to Wishbone 0
+assign wbs0_dat_o = !writable_port ? ram_dout0 : ram_dout1;
+assign wbs0_ack_o = !writable_port ? channel0_ack_o : channel1_ack_o;
+
+// Connect signals going from OpenRAM port 0 or 1 to Wishbone 1
+assign wbs1_dat_o = writable_port ? ram_dout0 : ram_dout1;
+assign wbs1_ack_o = writable_port ? channel0_ack_o : channel1_ack_o;
 
 
 endmodule	// wb_openram_wrapper
