@@ -19,9 +19,6 @@ set ::env(VERILOG_FILES) [glob $::env(DESIGN_DIR)/src/*.v]
 # with this option being turned off.
 ##set ::env(FP_PDN_CHECK_NODES) 0
 
-# define number of IO pads
-set ::env(SYNTH_DEFINES) "MPRJ_IO_PADS=38"
-
 # Fill this
 set ::env(CLOCK_PORT) "wb_clk_i"
 

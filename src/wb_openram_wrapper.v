@@ -17,7 +17,7 @@
 
 module wb_openram_wrapper 
 #(
-    parameter BASE_ADDR = 32'h3000_0000,
+    parameter BASE_ADDR = 32'h30c0_0000,
     parameter ADDR_WIDTH = 8
 )
 (
