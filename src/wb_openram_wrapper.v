@@ -126,7 +126,6 @@ assign port1_rst_i = writable_port_req ? wb_a_rst_i : wb_b_rst_i;
 assign port1_stb_i = writable_port_req ? wbs_a_stb_i : wbs_b_stb_i;
 assign port1_cyc_i = writable_port_req ? wbs_a_cyc_i : wbs_b_cyc_i;
 assign port1_we_i = writable_port_req ? wbs_a_we_i : wbs_b_we_i;
-assign port1_adr_i = writable_port_req ? wbs_a_adr_i : wbs_b_adr_i;
 
 // Connect signals going directly from Wishbone A or B to OpenRAM port 1 (R)
 assign ram_clk1 = writable_port_req ? wb_a_clk_i : wb_b_clk_i;
