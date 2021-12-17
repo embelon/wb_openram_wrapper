@@ -37,7 +37,7 @@ module wb_openram_wrapper
     input           		wbs_a_we_i,
     input   [3:0]   		wbs_a_sel_i,
     input   [31:0]  		wbs_a_dat_i,
-    input   [ADDR_WIDTH-1:0]  	wbs_a_adr_i,
+    input   [ADDR_WIDTH+1:0]  	wbs_a_adr_i,
     output          		wbs_a_ack_o,
     output  [31:0]  		wbs_a_dat_o,
 
@@ -49,7 +49,7 @@ module wb_openram_wrapper
     input           		wbs_b_we_i,
     input   [3:0]   		wbs_b_sel_i,
     input   [31:0]  		wbs_b_dat_i,
-    input   [ADDR_WIDTH-1:0] 	wbs_b_adr_i,
+    input   [ADDR_WIDTH+1:0] 	wbs_b_adr_i,
     output          		wbs_b_ack_o,
     output  [31:0]  		wbs_b_dat_o,
 
@@ -86,7 +86,7 @@ assign port0_we_i = writable_port_req ? wbs_b_we_i : wbs_a_we_i;
 // Connect signals going directly from Wishbone A or B to OpenRAM port 0 (RW)
 assign ram_clk0 = writable_port_req ? wb_b_clk_i : wb_a_clk_i;
 assign ram_wmask0 = writable_port_req ? wbs_b_sel_i : wbs_a_sel_i;
-assign ram_addr0 = writable_port_req ? wbs_b_adr_i : wbs_a_adr_i;
+assign ram_addr0 = writable_port_req ? wbs_b_adr_i[ADDR_WIDTH+1:2] : wbs_a_adr_i[ADDR_WIDTH+1:2];
 assign ram_din0 = writable_port_req ? wbs_b_dat_i : wbs_a_dat_i;
 
 wb_port_control
@@ -129,7 +129,7 @@ assign port1_we_i = writable_port_req ? wbs_a_we_i : wbs_b_we_i;
 
 // Connect signals going directly from Wishbone A or B to OpenRAM port 1 (R)
 assign ram_clk1 = writable_port_req ? wb_a_clk_i : wb_b_clk_i;
-assign ram_addr1 = writable_port_req ? wbs_a_adr_i : wbs_b_adr_i;
+assign ram_addr1 = writable_port_req ? wbs_a_adr_i[ADDR_WIDTH+1:2] : wbs_b_adr_i[ADDR_WIDTH+1:2];
 
 wb_port_control 
 #(
