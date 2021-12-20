@@ -1,5 +1,6 @@
 # User config
 set script_dir [file dirname [file normalize [info script]]]
+set proj_dir [file dirname [file normalize [info script]]]
 
 # Project's name / Top level name
 set ::env(DESIGN_NAME) wb_openram_wrapper
@@ -23,7 +24,10 @@ set ::env(VERILOG_FILES) [glob $::env(DESIGN_DIR)/src/*.v]
 set ::env(SYNTH_DEFINES) "MPRJ_IO_PADS=38"
 
 # Fill this
-set ::env(CLOCK_PORT) [list {wb_a_clk_i wb_b_clk_i}]
+set ::env(CLOCK_PORT) "wb_a_clk_i wb_b_clk_i"
+
+set ::env(SDC_FILE) "$proj_dir/wb_openram_wrapper.sdc"
+set ::env(BASE_SDC_FILE) "$proj_dir/wb_openram_wrapper.sdc"
 
 # macro needs to work inside Caravel, so can't be core and can't use metal 5
 set ::env(DESIGN_IS_CORE) 0
@@ -43,6 +47,12 @@ set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
 set ::env(RUN_CVC) 0
 
 set ::env(CELL_PAD) 4
+
+##set ::env(DIODE_INSERTION_STRATEGY) 4
+##set ::env(GLB_RT_MAX_DIODE_INS_ITERS) 3
+
+##set ::env(PL_RESIZER_SETUP_SLACK_MARGIN) 1.8
+##set ::env(GLB_RESIZER_SETUP_SLACK_MARGIN) 1.8
 
 set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
 if { [file exists $filename] == 1} {
