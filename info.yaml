@@ -1,9 +1,11 @@
 --- 
 # information
 project: 
-  title: "OpenRAM wishbone wrapper"
+  title: "Wrapper"
+  description: "OpenRAM wishbone wrapper"
   license: LICENSE
   module_name: "wb_openram_wrapper"
+  author: "Paweł"
 
 # source
 source:
