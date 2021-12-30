@@ -1,0 +1,18 @@
+--- 
+# information
+project: 
+  title: "Wrapper"
+  description: "OpenRAM wishbone wrapper"
+  license: LICENSE
+  module_name: "wb_openram_wrapper"
+  author: "Paweł / embelon"
+
+# source
+source:
+    - src/wb_port_control.v
+    - src/wb_openram_wrapper.v
+
+gds:
+  directory: "gds"
+  gds_filename: "wb_openram_wrapper.gds"
+  lef_filename: "wb_openram_wrapper.lef"
