@@ -14,6 +14,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 `default_nettype none
+`timescale 1ns/1ns
 
 module wb_openram_wrapper 
 #(

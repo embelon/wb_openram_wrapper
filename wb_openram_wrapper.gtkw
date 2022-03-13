@@ -1,0 +1,61 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Sun Mar 13 22:29:56 2022
+[*]
+[dumpfile] "/home/zwierzak/Projects/ZeroToAsic/mpw4/wb_openram_wrapper/wb_openram_wrapper.vcd"
+[dumpfile_mtime] "Sun Mar 13 22:25:49 2022"
+[dumpfile_size] 3800
+[savefile] "/home/zwierzak/Projects/ZeroToAsic/mpw4/wb_openram_wrapper/wb_openram_wrapper.gtkw"
+[timestart] 0
+[size] 2560 1393
+[pos] -39 -39
+*-15.000000 71200 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] wb_openram_wrapper.
+[sst_width] 297
+[signals_width] 240
+[sst_expanded] 1
+[sst_vpaned_height] 433
+@28
+wb_openram_wrapper.writable_port_req
+wb_openram_wrapper.wb_a_clk_i
+wb_openram_wrapper.wb_a_rst_i
+wb_openram_wrapper.wbs_a_stb_i
+wb_openram_wrapper.wbs_a_cyc_i
+wb_openram_wrapper.wbs_a_we_i
+@22
+wb_openram_wrapper.wbs_a_sel_i[3:0]
+wb_openram_wrapper.wbs_a_dat_i[31:0]
+@28
+wb_openram_wrapper.wbs_a_ack_o
+@22
+wb_openram_wrapper.wbs_a_dat_o[31:0]
+@28
+wb_openram_wrapper.wb_b_clk_i
+wb_openram_wrapper.wb_b_rst_i
+wb_openram_wrapper.wbs_b_stb_i
+wb_openram_wrapper.wbs_b_cyc_i
+wb_openram_wrapper.wbs_b_we_i
+@22
+wb_openram_wrapper.wbs_b_sel_i[3:0]
+wb_openram_wrapper.wbs_b_dat_i[31:0]
+@28
+wb_openram_wrapper.wbs_b_ack_o
+@22
+wb_openram_wrapper.wbs_b_dat_o[31:0]
+@28
+wb_openram_wrapper.ram_clk0
+wb_openram_wrapper.ram_csb0
+wb_openram_wrapper.ram_web0
+@22
+wb_openram_wrapper.ram_wmask0[3:0]
+wb_openram_wrapper.ram_addr0[7:0]
+wb_openram_wrapper.ram_din0[31:0]
+wb_openram_wrapper.ram_dout0[31:0]
+@28
+wb_openram_wrapper.ram_clk1
+wb_openram_wrapper.ram_csb1
+@22
+wb_openram_wrapper.ram_addr1[7:0]
+wb_openram_wrapper.ram_dout1[31:0]
+[pattern_trace] 1
+[pattern_trace] 0
