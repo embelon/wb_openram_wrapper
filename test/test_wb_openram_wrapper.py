@@ -37,9 +37,11 @@ def init_ram(ram_bus, size, prefix):
 @cocotb.test()
 async def test_wb_openram_wrapper(dut):
 
-    clock = Clock(dut.wb_a_clk_i, 10, units="us")
+    clock_a = Clock(dut.wb_a_clk_i, 10, units="us")
+    clock_b = Clock(dut.wb_b_clk_i, 20, units="us")
 
-    cocotb.fork(clock.start())
+    cocotb.fork(clock_a.start())
+    cocotb.fork(clock_b.start())
 
     dut.writable_port_req = 0
 
@@ -68,15 +70,57 @@ async def test_wb_openram_wrapper(dut):
     wbma_bus = WishboneMaster(dut, "", dut.wb_a_clk_i, width=32, timeout=10, signals_dict=wbma_signals_dict)
     wbmb_bus = WishboneMaster(dut, "", dut.wb_b_clk_i, width=32, timeout=10, signals_dict=wbmb_signals_dict)
 
-    await reset_a(dut)    
+    await reset_a(dut)   
+    await reset_b(dut) 
+
+    ## RW access for Port A
+    dut.writable_port_req = 0
 
     await wbm_write(wbma_bus, 0x44, 0xdeadbeef)
 
-    await wbm_write(wbma_bus, 0, 0xc00ffeee)
+    await wbm_write(wbma_bus, 0x0, 0xc00ffeee)
 
     read = await wbm_read(wbma_bus, 0x44)
     assert read == 0xdeadbeef
 
+    read = await wbm_read(wbmb_bus, 0)
+    assert read == 0xc00ffeee
+
+    read = await wbm_read(wbmb_bus, 0x44)
+    assert read == 0xdeadbeef
+
     read = await wbm_read(wbma_bus, 0)
     assert read == 0xc00ffeee
-    
+
+    ## RW access for Port B
+    dut.writable_port_req = 1
+
+    await wbm_write(wbmb_bus, 0x48, 0x10ff10ff)
+
+    await wbm_write(wbmb_bus, 0x4, 0xb055b055)
+
+    read = await wbm_read(wbma_bus, 0x48)
+    assert read == 0x10ff10ff
+
+    read = await wbm_read(wbmb_bus, 4)
+    assert read == 0xb055b055
+
+    read = await wbm_read(wbmb_bus, 0x48)
+    assert read == 0x10ff10ff
+
+    read = await wbm_read(wbma_bus, 4)
+    assert read == 0xb055b055
+
+    read = await wbm_read(wbma_bus, 0x44)
+    assert read == 0xdeadbeef
+
+    read = await wbm_read(wbmb_bus, 0)
+    assert read == 0xc00ffeee
+
+    read = await wbm_read(wbmb_bus, 0x44)
+    assert read == 0xdeadbeef
+
+    read = await wbm_read(wbma_bus, 0)
+    assert read == 0xc00ffeee
+
+
