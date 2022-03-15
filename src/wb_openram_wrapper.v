@@ -157,12 +157,18 @@ wb_port_control
    
 
 // Connect signals going from OpenRAM port 0 or 1 to Wishbone A
-assign wbs_a_dat_o = writable_port_req ? ram_dout1 : ram_dout0;
 assign wbs_a_ack_o = writable_port_req ? port1_ack_o : port0_ack_o;
 
+wire [31:0] doutA;
+assign doutA = writable_port_req ? ram_dout1 : ram_dout0;
+assign wbs_a_dat_o = wbs_a_we_i ? wbs_a_dat_i : doutA;
+
 // Connect signals going from OpenRAM port 0 or 1 to Wishbone B
-assign wbs_b_dat_o = writable_port_req ? ram_dout0 : ram_dout1;
 assign wbs_b_ack_o = writable_port_req ? port0_ack_o : port1_ack_o;
+
+wire [31:0] doutB;
+assign doutB = writable_port_req ? ram_dout0 : ram_dout1;
+assign wbs_b_dat_o = wbs_b_we_i ? wbs_b_dat_i : doutB;
 
 
 endmodule	// wb_openram_wrapper
