@@ -12,7 +12,7 @@ source:
     - src/wb_port_control.v
     - src/wb_openram_wrapper.v
 
-gds:
-  directory: "gds"
+final:
+  directory: "final"
   gds_filename: "wb_openram_wrapper.gds"
   lef_filename: "wb_openram_wrapper.lef"
