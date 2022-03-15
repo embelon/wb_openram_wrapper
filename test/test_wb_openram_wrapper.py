@@ -75,5 +75,8 @@ async def test_wb_openram_wrapper(dut):
     await wbm_write(wbma_bus, 0, 0xc00ffeee)
 
     read = await wbm_read(wbma_bus, 0x44)
-    # there's no memory connected
-    # assert read == 0xdeadbeef
+    assert read == 0xdeadbeef
+
+    read = await wbm_read(wbma_bus, 0)
+    assert read == 0xc00ffeee
+    
