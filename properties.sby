@@ -1,0 +1,14 @@
+[options]
+mode prove
+depth 5
+
+[engines]
+smtbmc
+
+[script]
+read -formal wb_openram_wrapper.v
+prep -top wb_openram_wrapper
+
+[files]
+src/wb_openram_wrapper.v
+src/wb_port_control.v

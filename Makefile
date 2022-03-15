@@ -1,4 +1,10 @@
 
+## SRAM macros
+SRAM_BEHAVIORAL_MODELS = $(PDK_PATH)/libs.ref/sky130_sram_macros/verilog
+
+##
+UPRJ_SRC_PATH = ./src
+
 # COCOTB variables
 export COCOTB_REDUCED_LOG_FMT=1
 export PYTHONPATH := test:$(PYTHONPATH)
@@ -13,7 +19,8 @@ formal:
 test_wb_openram_wrapper:
 	rm -rf sim_build/
 	mkdir sim_build/
-	iverilog -o sim_build/sim.vvp -s wb_openram_wrapper -s dump src/wb_openram_wrapper.v src/wb_port_control.v test/dump_wb_openram_wrapper.v
+	iverilog -o sim_build/sim.vvp -s wb_openram_wrapper_tb test/wb_openram_wrapper_tb.v src/wb_openram_wrapper.v src/wb_port_control.v \
+	-I $(SRAM_BEHAVIORAL_MODELS)
 	PYTHONOPTIMIZE=${NOASSERT} MODULE=test_wb_openram_wrapper vvp -M $$(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus sim_build/sim.vvp
 	! grep failure results.xml
 	
