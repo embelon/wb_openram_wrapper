@@ -71,6 +71,12 @@ async def test_wb_openram_wrapper(dut):
     await reset_a(dut)   
     await reset_b(dut) 
 
+    ## Change latency 
+    await wbm_write(wbma_bus, 0x7fc, 0x03040506)
+
+    read = await wbm_read(wbma_bus, 0x7fc)
+    assert read == 0x03040506
+
     ## RW access for Port A
     dut.writable_port_req = 0
 
@@ -89,6 +95,12 @@ async def test_wb_openram_wrapper(dut):
 
     read = await wbm_read(wbma_bus, 0)
     assert read == 0xc00ffeee
+
+    ## Change latency 
+    await wbm_write(wbma_bus, 0x7fc, 0)
+
+    read = await wbm_read(wbma_bus, 0x7fc)
+    assert read == 0
 
     ## RW access for Port B
     dut.writable_port_req = 1

@@ -18,7 +18,7 @@
 
 module wb_openram_wrapper 
 #(
-    parameter ADDR_WIDTH = 8
+    parameter RAM_ADDR_WIDTH = 8
 )
 (
 `ifdef USE_POWER_PINS
@@ -27,48 +27,75 @@ module wb_openram_wrapper
 `endif
 
     // Select writable WB port
-    input           		writable_port_req,
+    input           		    writable_port_req,
 //    output			writable_port_sel,
 
     // Wishbone port A
-    input           		wb_a_clk_i,
-    input           		wb_a_rst_i,
-    input           		wbs_a_stb_i,
-    input           		wbs_a_cyc_i,
-    input           		wbs_a_we_i,
-    input   [3:0]   		wbs_a_sel_i,
-    input   [31:0]  		wbs_a_dat_i,
-    input   [ADDR_WIDTH+1:0]  	wbs_a_adr_i,
-    output          		wbs_a_ack_o,
-    output  [31:0]  		wbs_a_dat_o,
+    input           		    wb_a_clk_i,
+    input           		    wb_a_rst_i,
+    input           		    wbs_a_stb_i,
+    input           		    wbs_a_cyc_i,
+    input           		    wbs_a_we_i,
+    input   [3:0]   		    wbs_a_sel_i,
+    input   [31:0]  		    wbs_a_dat_i,
+    input   [RAM_ADDR_WIDTH+2:0]  	wbs_a_adr_i,
+    output          		    wbs_a_ack_o,
+    output  [31:0]  		    wbs_a_dat_o,
 
     // Wishbone port B
-    input           		wb_b_clk_i,
-    input           		wb_b_rst_i,
-    input           		wbs_b_stb_i,
-    input           		wbs_b_cyc_i,
-    input           		wbs_b_we_i,
-    input   [3:0]   		wbs_b_sel_i,
-    input   [31:0]  		wbs_b_dat_i,
-    input   [ADDR_WIDTH+1:0] 	wbs_b_adr_i,
-    output          		wbs_b_ack_o,
-    output  [31:0]  		wbs_b_dat_o,
+    input           		    wb_b_clk_i,
+    input           		    wb_b_rst_i,
+    input           		    wbs_b_stb_i,
+    input           		    wbs_b_cyc_i,
+    input           		    wbs_b_we_i,
+    input   [3:0]   		    wbs_b_sel_i,
+    input   [31:0]  		    wbs_b_dat_i,
+    input   [RAM_ADDR_WIDTH+1:0] 	wbs_b_adr_i,
+    output          		    wbs_b_ack_o,
+    output  [31:0]  		    wbs_b_dat_o,
 
     // OpenRAM interface - almost dual port: RW + R
     // Port 0: RW
-    output                      ram_clk0,       // clock
-    output                      ram_csb0,       // active low chip select
-    output                      ram_web0,       // active low write control
-    output  [3:0]              	ram_wmask0,     // write (byte) mask
-    output  [ADDR_WIDTH-1:0]    ram_addr0,
-    output  [31:0]              ram_din0,       // output = connect to openram input (din)
-    input   [31:0]              ram_dout0,      // input = connect to openram output (dout)
+    output                          ram_clk0,       // clock
+    output                          ram_csb0,       // active low chip select
+    output                          ram_web0,       // active low write control
+    output  [3:0]              	    ram_wmask0,     // write (byte) mask
+    output  [RAM_ADDR_WIDTH-1:0]    ram_addr0,
+    output  [31:0]                  ram_din0,       // output = connect to openram input (din)
+    input   [31:0]                  ram_dout0,      // input = connect to openram output (dout)
     
     // Port 1: R
-    output                      ram_clk1,       // clock
-    output                      ram_csb1,       // active low chip select
-    output  [ADDR_WIDTH-1:0]    ram_addr1,  
-    input   [31:0]              ram_dout1       // input = connect to openram output (dout)   
+    output                          ram_clk1,       // clock
+    output                          ram_csb1,       // active low chip select
+    output  [RAM_ADDR_WIDTH-1:0]    ram_addr1,  
+    input   [31:0]                  ram_dout1       // input = connect to openram output (dout)   
+);
+
+// Configuration register access on Wishbone A
+// If MSB of wbs_a_adr_i = 0 -> CSR access
+// If MSB of wbs_a_adr_i = 1 -> OpenRAM access
+wire wbs_a_csr;
+assign wbs_a_csr = wbs_a_adr_i[RAM_ADDR_WIDTH+2] == 1;
+
+// Port 0 latencies 
+wire [3:0] port0_lat_prefetch;
+wire [3:0] port0_lat_read;
+// Port 1 latencies
+wire [3:0] port1_lat_prefetch;
+wire [3:0] port1_lat_read;
+
+register_rw 
+#(
+    .WIDTH(16),	
+    .DEFAULT_VALUE(16'h2222)
+)
+latency_reg
+(
+    .rst        (wb_a_rst_i),
+    .clk        (wb_a_clk_i),
+    .wren       ( wbs_a_cyc_i & wbs_a_stb_i & wbs_a_we_i & wbs_a_csr ),
+    .data_in    ( {wbs_a_dat_i[27:24], wbs_a_dat_i[19:16], wbs_a_dat_i[11:8], wbs_a_dat_i[3:0]} ),
+    .data_out   ( {port1_lat_prefetch, port1_lat_read, port0_lat_prefetch, port0_lat_read} )
 );
 
 // Signals for OpenRAM Port 0 Control block
@@ -83,13 +110,13 @@ wire [31:0] port0_dat_o;
 // Connect signals going from Wishbone A or B to Port 0 Control block
 assign port0_clk_i = writable_port_req ? wb_b_clk_i : wb_a_clk_i;
 assign port0_rst_i = writable_port_req ? wb_b_rst_i : wb_a_rst_i;
-assign port0_stb_i = writable_port_req ? wbs_b_stb_i : wbs_a_stb_i;
-assign port0_cyc_i = writable_port_req ? wbs_b_cyc_i : wbs_a_cyc_i;
+assign port0_stb_i = writable_port_req ? wbs_b_stb_i : (wbs_a_stb_i & !wbs_a_csr);
+assign port0_cyc_i = writable_port_req ? wbs_b_cyc_i : (wbs_a_cyc_i & !wbs_a_csr);
 assign port0_we_i = writable_port_req ? wbs_b_we_i : wbs_a_we_i;
 
 // Connect signals going directly from Wishbone A or B to OpenRAM port 0 (RW)
 assign ram_wmask0 = writable_port_req ? wbs_b_sel_i : wbs_a_sel_i;
-assign ram_addr0 = writable_port_req ? wbs_b_adr_i[ADDR_WIDTH+1:2] : wbs_a_adr_i[ADDR_WIDTH+1:2];
+assign ram_addr0 = writable_port_req ? wbs_b_adr_i[RAM_ADDR_WIDTH+1:2] : wbs_a_adr_i[RAM_ADDR_WIDTH+1:2];
 assign ram_din0 = writable_port_req ? wbs_b_dat_i : wbs_a_dat_i;
 
 wb_port_control
@@ -104,8 +131,8 @@ wb_port_control
 `endif
 
     // configuration for clock stretching
-    .prefetch_cycles (4'h0),
-    .read_cycles    (4'h0),
+    .prefetch_cycles (port0_lat_prefetch),
+    .read_cycles    (port0_lat_read),
 
     // Wishbone interface
     .wb_clk_i       (port0_clk_i),
@@ -137,12 +164,12 @@ wire [31:0] port1_dat_o;
 // Connect signals going from Wishbone A or B to Port 1 Control block
 assign port1_clk_i = writable_port_req ? wb_a_clk_i : wb_b_clk_i;
 assign port1_rst_i = writable_port_req ? wb_a_rst_i : wb_b_rst_i;
-assign port1_stb_i = writable_port_req ? wbs_a_stb_i : wbs_b_stb_i;
-assign port1_cyc_i = writable_port_req ? wbs_a_cyc_i : wbs_b_cyc_i;
+assign port1_stb_i = writable_port_req ? (wbs_a_stb_i & !wbs_a_csr) : wbs_b_stb_i;
+assign port1_cyc_i = writable_port_req ? (wbs_a_cyc_i & !wbs_a_csr) : wbs_b_cyc_i;
 assign port1_we_i = writable_port_req ? wbs_a_we_i : wbs_b_we_i;
 
 // Connect signals going directly from Wishbone A or B to OpenRAM port 1 (R)
-assign ram_addr1 = writable_port_req ? wbs_a_adr_i[ADDR_WIDTH+1:2] : wbs_b_adr_i[ADDR_WIDTH+1:2];
+assign ram_addr1 = writable_port_req ? wbs_a_adr_i[RAM_ADDR_WIDTH+1:2] : wbs_b_adr_i[RAM_ADDR_WIDTH+1:2];
 
 wb_port_control 
 #(
@@ -156,8 +183,8 @@ wb_port_control
 `endif
 
     // configuration for clock stretching
-    .prefetch_cycles (4'h2),
-    .read_cycles    (4'h3),
+    .prefetch_cycles (port1_lat_prefetch),
+    .read_cycles    (port1_lat_read),
 
     // Wishbone interface
     .wb_clk_i       (port1_clk_i),
@@ -177,10 +204,14 @@ wb_port_control
    
 
 // Connect signals going from OpenRAM port 0 or 1 to Wishbone A
-assign wbs_a_ack_o = writable_port_req ? port1_ack_o : port0_ack_o;
+wire ackA_ram;
+assign ackA_ram = writable_port_req ? port1_ack_o : port0_ack_o;
+assign wbs_a_ack_o = wbs_a_csr ? (wbs_a_cyc_i & wbs_a_stb_i & wbs_a_csr) : ackA_ram;
 
 wire [31:0] doutA;
-assign doutA = writable_port_req ? port1_dat_o : port0_dat_o;
+wire [31:0] doutA_ram;
+assign doutA_ram = writable_port_req ? port1_dat_o : port0_dat_o;
+assign doutA = wbs_a_csr ? ({4'h0, port1_lat_prefetch, 4'h0, port1_lat_read, 4'h0, port0_lat_prefetch, 4'h0, port0_lat_read}) : doutA_ram;
 assign wbs_a_dat_o = wbs_a_we_i ? wbs_a_dat_i : doutA;
 
 // Connect signals going from OpenRAM port 0 or 1 to Wishbone B

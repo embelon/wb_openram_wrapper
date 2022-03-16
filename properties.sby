@@ -12,3 +12,4 @@ prep -top wb_openram_wrapper
 [files]
 src/wb_openram_wrapper.v
 src/wb_port_control.v
+src/register_rw.v

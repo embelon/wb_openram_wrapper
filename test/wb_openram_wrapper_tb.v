@@ -17,7 +17,7 @@ module wb_openram_wrapper_tb (
     input           		wbs_a_we_i,
     input   [3:0]   		wbs_a_sel_i,
     input   [31:0]  		wbs_a_dat_i,
-    input   [9:0]  	        wbs_a_adr_i,
+    input   [10:0]          wbs_a_adr_i,
     output          		wbs_a_ack_o,
     output  [31:0]  		wbs_a_dat_o,
 
