@@ -75,7 +75,7 @@ module wb_openram_wrapper
 // If MSB of wbs_a_adr_i = 0 -> CSR access
 // If MSB of wbs_a_adr_i = 1 -> OpenRAM access
 wire wbs_a_csr;
-assign wbs_a_csr = wbs_a_adr_i[RAM_ADDR_WIDTH+2] == 1;
+assign wbs_a_csr = wbs_a_adr_i[RAM_ADDR_WIDTH+2] == 0;
 
 // Port 0 latencies 
 wire [3:0] port0_lat_prefetch;

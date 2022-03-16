@@ -72,68 +72,68 @@ async def test_wb_openram_wrapper(dut):
     await reset_b(dut) 
 
     ## Change latency 
-    await wbm_write(wbma_bus, 0x7fc, 0x03040506)
+    await wbm_write(wbma_bus, 0x3fc, 0x03040506)
 
-    read = await wbm_read(wbma_bus, 0x7fc)
+    read = await wbm_read(wbma_bus, 0x3fc)
     assert read == 0x03040506
 
     ## RW access for Port A
     dut.writable_port_req = 0
 
-    await wbm_write(wbma_bus, 0x44, 0xdeadbeef)
+    await wbm_write(wbma_bus, 0x444, 0xdeadbeef)
 
-    await wbm_write(wbma_bus, 0x0, 0xc00ffeee)
+    await wbm_write(wbma_bus, 0x400, 0xc00ffeee)
 
-    read = await wbm_read(wbma_bus, 0x44)
+    read = await wbm_read(wbma_bus, 0x444)
     assert read == 0xdeadbeef
 
-    read = await wbm_read(wbmb_bus, 0)
+    read = await wbm_read(wbmb_bus, 0x000)
     assert read == 0xc00ffeee
 
-    read = await wbm_read(wbmb_bus, 0x44)
+    read = await wbm_read(wbmb_bus, 0x044)
     assert read == 0xdeadbeef
 
-    read = await wbm_read(wbma_bus, 0)
+    read = await wbm_read(wbma_bus, 0x400)
     assert read == 0xc00ffeee
 
     ## Change latency 
-    await wbm_write(wbma_bus, 0x7fc, 0)
+    await wbm_write(wbma_bus, 0x3fc, 0)
 
-    read = await wbm_read(wbma_bus, 0x7fc)
+    read = await wbm_read(wbma_bus, 0x3fc)
     assert read == 0
 
     ## RW access for Port B
     dut.writable_port_req = 1
 
-    await wbm_write(wbmb_bus, 0x48, 0x10ff10ff)
+    await wbm_write(wbmb_bus, 0x048, 0x10ff10ff)
 
-    await wbm_write(wbmb_bus, 0x4, 0xb055b055)
+    await wbm_write(wbmb_bus, 0x004, 0xb055b055)
 
-    read = await wbm_read(wbma_bus, 0x48)
+    read = await wbm_read(wbma_bus, 0x448)
     assert read == 0x10ff10ff
 
-    read = await wbm_read(wbmb_bus, 4)
+    read = await wbm_read(wbmb_bus, 0x004)
     assert read == 0xb055b055
 
-    read = await wbm_read(wbmb_bus, 0x48)
+    read = await wbm_read(wbmb_bus, 0x048)
     assert read == 0x10ff10ff
 
-    read = await wbm_read(wbma_bus, 4)
+    read = await wbm_read(wbma_bus, 0x404)
     assert read == 0xb055b055
 
-    read = await wbm_read(wbma_bus, 0x44)
+    read = await wbm_read(wbma_bus, 0x444)
     assert read == 0xdeadbeef
 
-    read = await wbm_read(wbmb_bus, 0)
+    read = await wbm_read(wbmb_bus, 0x000)
     assert read == 0xc00ffeee
 
-    read = await wbm_read(wbmb_bus, 0x44)
+    read = await wbm_read(wbmb_bus, 0x044)
     assert read == 0xdeadbeef
 
-    read = await wbm_read(wbma_bus, 0)
+    read = await wbm_read(wbma_bus, 0x400)
     assert read == 0xc00ffeee
 
     ## RW access for Port B
     dut.writable_port_req = 0
     
-    await wbm_write(wbmb_bus, 0x68, 0xfaceface)
+    await wbm_write(wbmb_bus, 0x068, 0xfaceface)

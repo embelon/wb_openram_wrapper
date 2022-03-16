@@ -1,6 +1,6 @@
 
 ## SRAM macros
-SRAM_BEHAVIORAL_MODELS = $(PDK_PATH)/libs.ref/sky130_sram_macros/verilog
+SRAM_BEHAVIORAL_MODELS = $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/verilog
 
 ##
 UPRJ_SRC_PATH = ./src

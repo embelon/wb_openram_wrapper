@@ -43,7 +43,7 @@ class WishboneRAMReader:
         return self
 
     def __next__(self):
-        addr = self._wb_addr.value << 2
+        addr = self._wb_addr.value
         value = (
             self._data[addr]
             | (self._data[addr+1] << 8)
@@ -68,5 +68,5 @@ class WishboneRAM:
             if transaction.datwr:
                 for b in range(4):
                     if sel & 1 << b:
-                        addr = (transaction.adr << 2) + b
+                        addr = (transaction.adr & ~3) + b
                         self.data[addr] = (transaction.datwr >> (b*8)) & 0xff
