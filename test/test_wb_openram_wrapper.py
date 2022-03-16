@@ -7,15 +7,13 @@ from cocotbext.wishbone.monitor import WishboneSlave
 from wb_ram import WishboneRAM
 
 async def reset_a(dut):
-    dut.wb_a_rst_i = 1
-    dut.wb_a_rst_i = 0
+    dut.wb_a_rst_i = 1    
     await ClockCycles(dut.wb_a_clk_i, 10)
     dut.wb_a_rst_i = 0
     await ClockCycles(dut.wb_a_clk_i, 10)
 
 async def reset_b(dut):
     dut.wb_b_rst_i = 1
-    dut.wb_b_rst_i = 0
     await ClockCycles(dut.wb_b_clk_i, 10)
     dut.wb_b_rst_i = 0
     await ClockCycles(dut.wb_b_clk_i, 10)
@@ -123,4 +121,7 @@ async def test_wb_openram_wrapper(dut):
     read = await wbm_read(wbma_bus, 0)
     assert read == 0xc00ffeee
 
-
+    ## RW access for Port B
+    dut.writable_port_req = 0
+    
+    await wbm_write(wbmb_bus, 0x68, 0xfaceface)
