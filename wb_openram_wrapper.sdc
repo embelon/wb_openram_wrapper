@@ -6,10 +6,10 @@ current_design wb_openram_wrapper
 ###############################################################################
 # Timing Constraints
 ###############################################################################
-create_clock -name wb_a_clk_i -period 13.0000 [get_ports {wb_a_clk_i}]
+create_clock -name wb_a_clk_i -period 17.0000 [get_ports {wb_a_clk_i}]
 set_propagated_clock [get_clocks {wb_a_clk_i}]
 
-create_clock -name wb_b_clk_i -period 13.0000 [get_ports {wb_b_clk_i}]
+create_clock -name wb_b_clk_i -period 17.0000 [get_ports {wb_b_clk_i}]
 set_propagated_clock [get_clocks {wb_b_clk_i}]
 
 ##create_clock -name ram_clk0 -period 10.0000 [get_ports {ram_clk0}]

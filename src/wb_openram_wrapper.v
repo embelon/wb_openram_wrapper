@@ -71,6 +71,16 @@ module wb_openram_wrapper
     input   [31:0]                  ram_dout1       // input = connect to openram output (dout)   
 );
 
+reg writable_port_req_r;
+
+always @(negedge wb_a_clk_i) begin
+    if (wb_a_rst_i) begin
+	writable_port_req_r <= 0;
+    end else begin
+	writable_port_req_r <= writable_port_req;
+    end
+end
+
 // Configuration register access on Wishbone A
 // If MSB of wbs_a_adr_i = 0 -> CSR access
 // If MSB of wbs_a_adr_i = 1 -> OpenRAM access
@@ -108,16 +118,16 @@ wire port0_ack_o;
 wire [31:0] port0_dat_o;
 
 // Connect signals going from Wishbone A or B to Port 0 Control block
-assign port0_clk_i = writable_port_req ? wb_b_clk_i : wb_a_clk_i;
-assign port0_rst_i = writable_port_req ? wb_b_rst_i : wb_a_rst_i;
-assign port0_stb_i = writable_port_req ? wbs_b_stb_i : (wbs_a_stb_i & !wbs_a_csr);
-assign port0_cyc_i = writable_port_req ? wbs_b_cyc_i : (wbs_a_cyc_i & !wbs_a_csr);
-assign port0_we_i = writable_port_req ? wbs_b_we_i : wbs_a_we_i;
+assign port0_clk_i = writable_port_req_r ? wb_b_clk_i : wb_a_clk_i;
+assign port0_rst_i = writable_port_req_r ? wb_b_rst_i : wb_a_rst_i;
+assign port0_stb_i = writable_port_req_r ? wbs_b_stb_i : (wbs_a_stb_i & !wbs_a_csr);
+assign port0_cyc_i = writable_port_req_r ? wbs_b_cyc_i : (wbs_a_cyc_i & !wbs_a_csr);
+assign port0_we_i = writable_port_req_r ? wbs_b_we_i : wbs_a_we_i;
 
 // Connect signals going directly from Wishbone A or B to OpenRAM port 0 (RW)
-assign ram_wmask0 = writable_port_req ? wbs_b_sel_i : wbs_a_sel_i;
-assign ram_addr0 = writable_port_req ? wbs_b_adr_i[RAM_ADDR_WIDTH+1:2] : wbs_a_adr_i[RAM_ADDR_WIDTH+1:2];
-assign ram_din0 = writable_port_req ? wbs_b_dat_i : wbs_a_dat_i;
+assign ram_wmask0 = writable_port_req_r ? wbs_b_sel_i : wbs_a_sel_i;
+assign ram_addr0 = writable_port_req_r ? wbs_b_adr_i[RAM_ADDR_WIDTH+1:2] : wbs_a_adr_i[RAM_ADDR_WIDTH+1:2];
+assign ram_din0 = writable_port_req_r ? wbs_b_dat_i : wbs_a_dat_i;
 
 wb_port_control
 #(
@@ -162,14 +172,14 @@ wire port1_ack_o;
 wire [31:0] port1_dat_o;
 
 // Connect signals going from Wishbone A or B to Port 1 Control block
-assign port1_clk_i = writable_port_req ? wb_a_clk_i : wb_b_clk_i;
-assign port1_rst_i = writable_port_req ? wb_a_rst_i : wb_b_rst_i;
-assign port1_stb_i = writable_port_req ? (wbs_a_stb_i & !wbs_a_csr) : wbs_b_stb_i;
-assign port1_cyc_i = writable_port_req ? (wbs_a_cyc_i & !wbs_a_csr) : wbs_b_cyc_i;
-assign port1_we_i = writable_port_req ? wbs_a_we_i : wbs_b_we_i;
+assign port1_clk_i = writable_port_req_r ? wb_a_clk_i : wb_b_clk_i;
+assign port1_rst_i = writable_port_req_r ? wb_a_rst_i : wb_b_rst_i;
+assign port1_stb_i = writable_port_req_r ? (wbs_a_stb_i & !wbs_a_csr) : wbs_b_stb_i;
+assign port1_cyc_i = writable_port_req_r ? (wbs_a_cyc_i & !wbs_a_csr) : wbs_b_cyc_i;
+assign port1_we_i = writable_port_req_r ? wbs_a_we_i : wbs_b_we_i;
 
 // Connect signals going directly from Wishbone A or B to OpenRAM port 1 (R)
-assign ram_addr1 = writable_port_req ? wbs_a_adr_i[RAM_ADDR_WIDTH+1:2] : wbs_b_adr_i[RAM_ADDR_WIDTH+1:2];
+assign ram_addr1 = writable_port_req_r ? wbs_a_adr_i[RAM_ADDR_WIDTH+1:2] : wbs_b_adr_i[RAM_ADDR_WIDTH+1:2];
 
 wb_port_control 
 #(
@@ -205,20 +215,20 @@ wb_port_control
 
 // Connect signals going from OpenRAM port 0 or 1 to Wishbone A
 wire ackA_ram;
-assign ackA_ram = writable_port_req ? port1_ack_o : port0_ack_o;
+assign ackA_ram = writable_port_req_r ? port1_ack_o : port0_ack_o;
 assign wbs_a_ack_o = wbs_a_csr ? (wbs_a_cyc_i & wbs_a_stb_i & wbs_a_csr) : ackA_ram;
 
 wire [31:0] doutA;
 wire [31:0] doutA_ram;
-assign doutA_ram = writable_port_req ? port1_dat_o : port0_dat_o;
+assign doutA_ram = writable_port_req_r ? port1_dat_o : port0_dat_o;
 assign doutA = wbs_a_csr ? ({4'h0, port1_lat_prefetch, 4'h0, port1_lat_read, 4'h0, port0_lat_prefetch, 4'h0, port0_lat_read}) : doutA_ram;
 assign wbs_a_dat_o = wbs_a_we_i ? wbs_a_dat_i : doutA;
 
 // Connect signals going from OpenRAM port 0 or 1 to Wishbone B
-assign wbs_b_ack_o = writable_port_req ? port0_ack_o : port1_ack_o;
+assign wbs_b_ack_o = writable_port_req_r ? port0_ack_o : port1_ack_o;
 
 wire [31:0] doutB;
-assign doutB = writable_port_req ? port0_dat_o : port1_dat_o;
+assign doutB = writable_port_req_r ? port0_dat_o : port1_dat_o;
 assign wbs_b_dat_o = wbs_b_we_i ? wbs_b_dat_i : doutB;
 
 
