@@ -9,6 +9,7 @@ project:
 
 # source
 source:
+    - src/register_rw.v
     - src/wb_port_control.v
     - src/wb_openram_wrapper.v
 
