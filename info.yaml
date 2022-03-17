@@ -15,5 +15,6 @@ source:
 
 final:
   directory: "final"
-  gds_filename: "wb_openram_wrapper.gds"
-  lef_filename: "wb_openram_wrapper.lef"
+  gds_filename: "gds/wb_openram_wrapper.gds"
+  lvs_filename: "verilog/gl/wrapped_function_generator.v"
+  lef_filename: "lef/wb_openram_wrapper.lef"
